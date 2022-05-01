@@ -7,14 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
+class ViewController: UIViewController
+{
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        print("initial commit")
+        print("Init pods")
         // Do any additional setup after loading the view.
     }
-
-
 }
 

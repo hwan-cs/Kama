@@ -12,6 +12,7 @@
 		1A0F350A281ECB37003C4841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F3508281ECB37003C4841 /* Main.storyboard */; };
 		1A0F350C281ECB3B003C4841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350B281ECB3B003C4841 /* Assets.xcassets */; };
 		1A0F350F281ECB3B003C4841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350D281ECB3B003C4841 /* LaunchScreen.storyboard */; };
+		700C6C2C150DE26723EFE027 /* Pods_Kama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		1A0F350B281ECB3B003C4841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A0F350E281ECB3B003C4841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0F3510281ECB3B003C4841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D56CECC23024385D89BE9D51 /* Pods-Kama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kama.release.xcconfig"; path = "Target Support Files/Pods-Kama/Pods-Kama.release.xcconfig"; sourceTree = "<group>"; };
+		DE1AB6F605B4CCBE28E6FA59 /* Pods-Kama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kama.debug.xcconfig"; path = "Target Support Files/Pods-Kama/Pods-Kama.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700C6C2C150DE26723EFE027 /* Pods_Kama.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06636FE9768FA46930556CA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1A0F34F6281ECB37003C4841 = {
 			isa = PBXGroup;
 			children = (
 				1A0F3501281ECB37003C4841 /* Kama */,
 				1A0F3500281ECB37003C4841 /* Products */,
+				6354FDA5768FC1D69DCCA032 /* Pods */,
+				06636FE9768FA46930556CA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,16 @@
 			path = Kama;
 			sourceTree = "<group>";
 		};
+		6354FDA5768FC1D69DCCA032 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE1AB6F605B4CCBE28E6FA59 /* Pods-Kama.debug.xcconfig */,
+				D56CECC23024385D89BE9D51 /* Pods-Kama.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A0F3513281ECB3B003C4841 /* Build configuration list for PBXNativeTarget "Kama" */;
 			buildPhases = (
+				A552BCEDBF988CEADEBCE59C /* [CP] Check Pods Manifest.lock */,
 				1A0F34FB281ECB37003C4841 /* Sources */,
 				1A0F34FC281ECB37003C4841 /* Frameworks */,
 				1A0F34FD281ECB37003C4841 /* Resources */,
+				71A23741760DEDCA9E3265D3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		71A23741760DEDCA9E3265D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kama/Pods-Kama-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kama/Pods-Kama-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kama/Pods-Kama-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A552BCEDBF988CEADEBCE59C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kama-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A0F34FB281ECB37003C4841 /* Sources */ = {
@@ -280,6 +349,7 @@
 		};
 		1A0F3514281ECB3B003C4841 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE1AB6F605B4CCBE28E6FA59 /* Pods-Kama.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -308,6 +378,7 @@
 		};
 		1A0F3515281ECB3B003C4841 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D56CECC23024385D89BE9D51 /* Pods-Kama.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
