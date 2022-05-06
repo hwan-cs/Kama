@@ -349,12 +349,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - TweeTextField (1.6.3)
 
 DEPENDENCIES:
   - DropDown
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
+  - TweeTextField
 
 SPEC REPOS:
   trunk:
@@ -377,6 +379,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - TweeTextField
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -398,7 +401,8 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  TweeTextField: 47bf8e7f0433364a7f7e119c45e7f278ea50eb62
 
-PODFILE CHECKSUM: 90096c6539063c10a19e58c2ec197a100330df46
+PODFILE CHECKSUM: a6403ee16cd236d466f3b5b859b928f5ce28a0f2
 
 COCOAPODS: 1.10.1

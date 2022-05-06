@@ -1,24 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eVW-P1-B7O">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="up7-EJ-1jv">
+                                <rect key="frame" x="0.0" y="65" width="414" height="540.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="543" id="4u3-k8-OHI"/>
+                                    <constraint firstAttribute="width" constant="414" id="SYu-in-HOn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hza-9D-LgG">
+                                <rect key="frame" x="94" y="646" width="226" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="SDa-tJ-hAY"/>
+                                    <constraint firstAttribute="width" constant="226" id="tGF-HP-9RB"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="도움이 필요해요!">
+                                    <color key="baseBackgroundColor" red="0.56862745100000001" green="0.89411764709999997" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="rOU-wp-svZ" kind="show" id="ic7-2r-F1z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCf-YW-7b0">
+                                <rect key="frame" x="94" y="733" width="226" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="7x7-Ci-4IT"/>
+                                    <constraint firstAttribute="width" constant="226" id="FYP-nh-q31"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="도움을 줄래요!">
+                                    <color key="baseBackgroundColor" red="0.79607843137254897" green="0.94509803921568625" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="bY8-n7-r1q" kind="show" id="zsm-g5-N13"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-8z-TYb">
+                                <rect key="frame" x="158.5" y="807" width="97" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="9lE-oO-9dX"/>
+                                    <constraint firstAttribute="width" constant="97" id="fo5-n4-dGq"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="이미 회원이신가요?">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="miniSystem"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hza-9D-LgG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="9Rx-uO-0Q4"/>
+                            <constraint firstItem="up7-EJ-1jv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="H88-wq-GAt"/>
+                            <constraint firstItem="eCf-YW-7b0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="IvG-mz-jgg"/>
+                            <constraint firstItem="eCf-YW-7b0" firstAttribute="top" secondItem="Hza-9D-LgG" secondAttribute="bottom" constant="31" id="LSm-df-EN5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="up7-EJ-1jv" secondAttribute="trailing" id="Ott-UN-9tK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eCf-YW-7b0" secondAttribute="trailing" constant="94" id="Wdm-1l-bGP"/>
+                            <constraint firstItem="up7-EJ-1jv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y5z-sE-YdJ"/>
+                            <constraint firstItem="Hza-9D-LgG" firstAttribute="top" secondItem="up7-EJ-1jv" secondAttribute="bottom" constant="39" id="ccR-ZQ-pT6"/>
+                            <constraint firstItem="jlk-8z-TYb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hZA-bd-XOu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hza-9D-LgG" secondAttribute="trailing" constant="94" id="wGC-ud-4dW"/>
+                            <constraint firstItem="jlk-8z-TYb" firstAttribute="top" secondItem="eCf-YW-7b0" secondAttribute="bottom" constant="18" id="z2n-sY-x58"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="W3z-NG-XTk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1039.1304347826087" y="81.696428571428569"/>
+        </scene>
+        <!--회원가입-->
+        <scene sceneID="5sx-8K-LWI">
+            <objects>
+                <viewController id="rOU-wp-svZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nJh-ab-fWs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="QOB-W7-m0M"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="회원가입" id="IUY-om-rbq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8e5-4o-pKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="-232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uQa-6a-Sdf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eVW-P1-B7O" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vb1-uZ-LXH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ptL-X9-r2N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5d-G1-Egx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128.98550724637681" y="81.696428571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zu7-1Z-X2h">
+            <objects>
+                <viewController id="bY8-n7-r1q" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bs6-c0-d6a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Lx-jX-xGH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DvH-5N-i1k"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gub-1H-qCh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2090" y="491"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
