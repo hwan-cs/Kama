@@ -12,6 +12,7 @@
 		1A0F350A281ECB37003C4841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F3508281ECB37003C4841 /* Main.storyboard */; };
 		1A0F350C281ECB3B003C4841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350B281ECB3B003C4841 /* Assets.xcassets */; };
 		1A0F350F281ECB3B003C4841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350D281ECB3B003C4841 /* LaunchScreen.storyboard */; };
+		1AACD38D28280B0E00A278CD /* registerScreen_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */; };
 		700C6C2C150DE26723EFE027 /* Pods_Kama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		1A0F350B281ECB3B003C4841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A0F350E281ECB3B003C4841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0F3510281ECB3B003C4841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = registerScreen_gif.gif; sourceTree = "<group>"; };
 		8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56CECC23024385D89BE9D51 /* Pods-Kama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kama.release.xcconfig"; path = "Target Support Files/Pods-Kama/Pods-Kama.release.xcconfig"; sourceTree = "<group>"; };
 		DE1AB6F605B4CCBE28E6FA59 /* Pods-Kama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kama.debug.xcconfig"; path = "Target Support Files/Pods-Kama/Pods-Kama.debug.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		1A0F3501281ECB37003C4841 /* Kama */ = {
 			isa = PBXGroup;
 			children = (
+				1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */,
 				1A0F3502281ECB37003C4841 /* AppDelegate.swift */,
 				1A0F3506281ECB37003C4841 /* MainViewController.swift */,
 				1A0F3508281ECB37003C4841 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AACD38D28280B0E00A278CD /* registerScreen_gif.gif in Resources */,
 				1A0F350F281ECB3B003C4841 /* LaunchScreen.storyboard in Resources */,
 				1A0F350C281ECB3B003C4841 /* Assets.xcassets in Resources */,
 				1A0F350A281ECB37003C4841 /* Main.storyboard in Resources */,
