@@ -11,4 +11,5 @@ target 'Kama' do
   pod 'DropDown'
   pod 'Firebase/Analytics'
   pod 'TweeTextField'
+  pod 'Gifu'
 end

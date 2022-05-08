@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import Gifu
 
-class ViewController: UIViewController
+class MainViewController: UIViewController
 {
+    @IBOutlet var registerScreenGif: GIFImageView!
     override func viewDidLoad()
     {
         super.viewDidLoad()
         print("Init pods")
+        registerScreenGif.animate(withGIFNamed: "registerScreen_gif")
         // Do any additional setup after loading the view.
     }
 }

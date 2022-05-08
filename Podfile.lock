@@ -281,6 +281,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (< 3.0, >= 1.2)
+  - Gifu (3.3.1)
   - GoogleAppMeasurement (8.4.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.4.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -356,6 +357,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
+  - Gifu
   - TweeTextField
 
 SPEC REPOS:
@@ -370,6 +372,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
     - FirebaseInstallations
+    - Gifu
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -392,6 +395,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: cad03be1904b975f845e632f2720c3337da27faf
   FirebaseFirestore: 99613cefa9102c08da94f584faa5adfaf21f31da
   FirebaseInstallations: 2563cb18a723ef9c6ef18318a49519b75dce613c
+  Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
   GoogleAppMeasurement: 6b6a08fd9c71f4dbc89e0e812acca81d797aa342
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
@@ -403,6 +407,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   TweeTextField: 47bf8e7f0433364a7f7e119c45e7f278ea50eb62
 
-PODFILE CHECKSUM: a6403ee16cd236d466f3b5b859b928f5ce28a0f2
+PODFILE CHECKSUM: 9d3ccb3b1316bae8599bb4f94ea9ce81098b16fb
 
 COCOAPODS: 1.10.1

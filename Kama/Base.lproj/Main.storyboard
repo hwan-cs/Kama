@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="up7-EJ-1jv">
-                                <rect key="frame" x="0.0" y="65" width="414" height="540.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="up7-EJ-1jv" customClass="GIFImageView" customModule="Gifu">
+                                <rect key="frame" x="0.0" y="64" width="414" height="543"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="543" id="4u3-k8-OHI"/>
                                     <constraint firstAttribute="width" constant="414" id="SYu-in-HOn"/>
@@ -72,6 +72,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="rcL-Fz-G2H" kind="show" id="5OO-h5-ajB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -91,6 +94,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="W3z-NG-XTk"/>
+                    <connections>
+                        <outlet property="registerScreenGif" destination="up7-EJ-1jv" id="PYS-Ys-QC6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,14 +109,123 @@
                     <view key="view" contentMode="scaleToFill" id="nJh-ab-fWs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDx-Ik-ftx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-vY-W0m" customClass="TweePlaceholderTextField" customModule="TweeTextField">
+                                        <rect key="frame" x="32" y="32" width="221" height="91"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="a2Q-FJ-fSl"/>
+                                            <constraint firstAttribute="height" constant="91" id="k7w-Tl-BaA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-HA-X3g" customClass="TweePlaceholderTextField" customModule="TweeTextField">
+                                        <rect key="frame" x="32" y="155" width="221" height="91"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="B2C-Lm-wOO"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="221" id="QBk-IK-FiV"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="91" id="jRW-aB-r6V"/>
+                                            <constraint firstAttribute="height" constant="91" id="xzD-l3-JWp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*비밀번호"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2Q-C4-Clp">
+                                        <rect key="frame" x="32" y="298" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-dP-iYn">
+                                        <rect key="frame" x="32" y="337" width="329" height="535"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="329" id="jYj-fI-gqB"/>
+                                            <constraint firstAttribute="height" constant="535" id="tpa-ae-uYC"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-Uh-ARn">
+                                        <rect key="frame" x="0.0" y="710" width="414" height="64"/>
+                                        <color key="backgroundColor" red="0.56862745100000001" green="0.89411764709999997" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="olZ-jc-nCL"/>
+                                            <constraint firstAttribute="height" constant="64" id="rUp-zv-rsJ"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="동의하고 가입하기">
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="QSj-vY-W0m" firstAttribute="top" secondItem="GjA-jj-i9H" secondAttribute="top" constant="32" id="1I7-ML-vaa"/>
+                                    <constraint firstAttribute="bottom" secondItem="wk3-Uh-ARn" secondAttribute="bottom" id="9X5-1U-j2H"/>
+                                    <constraint firstItem="wk3-Uh-ARn" firstAttribute="bottom" secondItem="GjA-jj-i9H" secondAttribute="bottom" id="IEa-PG-kNU"/>
+                                    <constraint firstItem="n2Q-C4-Clp" firstAttribute="leading" secondItem="GjA-jj-i9H" secondAttribute="leading" constant="32" id="WTR-bX-goz"/>
+                                    <constraint firstAttribute="bottom" secondItem="wk3-Uh-ARn" secondAttribute="bottom" id="XoK-bQ-A9H"/>
+                                    <constraint firstItem="wk3-Uh-ARn" firstAttribute="leading" secondItem="sDx-Ik-ftx" secondAttribute="leading" id="aVS-c3-D1h"/>
+                                    <constraint firstItem="n2Q-C4-Clp" firstAttribute="top" secondItem="tSa-HA-X3g" secondAttribute="bottom" constant="52" id="cyj-Ux-3zw"/>
+                                    <constraint firstItem="dNI-dP-iYn" firstAttribute="top" secondItem="n2Q-C4-Clp" secondAttribute="bottom" constant="18" id="g1k-hK-nY1"/>
+                                    <constraint firstAttribute="trailing" secondItem="wk3-Uh-ARn" secondAttribute="trailing" id="gfm-4b-neR"/>
+                                    <constraint firstAttribute="bottom" secondItem="wk3-Uh-ARn" secondAttribute="bottom" id="iWe-Bs-IWl"/>
+                                    <constraint firstItem="QSj-vY-W0m" firstAttribute="leading" secondItem="GjA-jj-i9H" secondAttribute="leading" constant="32" id="jl1-ko-hlk"/>
+                                    <constraint firstItem="tSa-HA-X3g" firstAttribute="leading" secondItem="GjA-jj-i9H" secondAttribute="leading" constant="32" id="mSF-gh-5Wj"/>
+                                    <constraint firstItem="dNI-dP-iYn" firstAttribute="leading" secondItem="sDx-Ik-ftx" secondAttribute="leading" constant="32" id="mf4-my-702"/>
+                                    <constraint firstItem="GjA-jj-i9H" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n2Q-C4-Clp" secondAttribute="trailing" symbolic="YES" id="sn3-pc-u1X"/>
+                                    <constraint firstItem="tSa-HA-X3g" firstAttribute="top" secondItem="QSj-vY-W0m" secondAttribute="bottom" constant="32" id="wdl-mF-NXI"/>
+                                    <constraint firstAttribute="trailing" secondItem="dNI-dP-iYn" secondAttribute="trailing" constant="53" id="yb0-JT-ktF"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="0cb-fI-rp9"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="GjA-jj-i9H"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QOB-W7-m0M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="top" secondItem="QOB-W7-m0M" secondAttribute="top" id="3je-3Q-Gk2"/>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="leading" secondItem="QOB-W7-m0M" secondAttribute="leading" id="7De-at-B1o"/>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="top" secondItem="QOB-W7-m0M" secondAttribute="top" id="7Ra-QC-Abw"/>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="trailing" secondItem="QOB-W7-m0M" secondAttribute="trailing" id="Qhs-O5-mg6"/>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="bottom" secondItem="QOB-W7-m0M" secondAttribute="bottom" id="RqK-oa-4Gf"/>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="bottom" secondItem="QOB-W7-m0M" secondAttribute="bottom" id="mTi-Ip-mnu"/>
+                            <constraint firstItem="sDx-Ik-ftx" firstAttribute="bottom" secondItem="QOB-W7-m0M" secondAttribute="bottom" id="usG-AW-mVJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입" id="IUY-om-rbq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8e5-4o-pKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2091" y="-232"/>
+            <point key="canvasLocation" x="2090" y="-642"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3Aw-k8-p0z">
+            <objects>
+                <viewController id="rcL-Fz-G2H" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TH3-pf-5xR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7r1-XU-E0V"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ThF-hE-4dp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bap-Zo-1Xi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2090" y="797"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uQa-6a-Sdf">
@@ -130,25 +245,117 @@
             </objects>
             <point key="canvasLocation" x="128.98550724637681" y="81.696428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--회원가입 (비장애인)-->
         <scene sceneID="zu7-1Z-X2h">
             <objects>
                 <viewController id="bY8-n7-r1q" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bs6-c0-d6a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ik6-2H-15y">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLL-DY-Ikg" customClass="TweePlaceholderTextField" customModule="TweeTextField">
+                                        <rect key="frame" x="32" y="32" width="221" height="91"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="Egt-FY-1Qv"/>
+                                            <constraint firstAttribute="height" constant="91" id="FXP-SN-DZQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-xs-NY7" customClass="TweePlaceholderTextField" customModule="TweeTextField">
+                                        <rect key="frame" x="32" y="155" width="221" height="91"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="221" id="7Qm-XE-mJG"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="221" id="EEt-KY-Ka8"/>
+                                            <constraint firstAttribute="height" constant="91" id="gOC-ob-Z3n"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="91" id="jCf-pP-G6U"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*비밀번호"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvM-Fh-Z3S">
+                                        <rect key="frame" x="32" y="298" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bqz-W9-41x">
+                                        <rect key="frame" x="32" y="337" width="329" height="535"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="535" id="GOa-JA-tzJ"/>
+                                            <constraint firstAttribute="width" constant="329" id="cTf-0Q-jXW"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJx-wK-rpR">
+                                        <rect key="frame" x="0.0" y="710" width="414" height="64"/>
+                                        <color key="backgroundColor" red="0.56862745100000001" green="0.89411764709999997" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="8Of-va-q1y"/>
+                                            <constraint firstAttribute="height" constant="64" id="pwe-lB-9gl"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="동의하고 가입하기">
+                                            <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bqz-W9-41x" firstAttribute="leading" secondItem="Ik6-2H-15y" secondAttribute="leading" constant="32" id="3ah-ae-SVl"/>
+                                    <constraint firstItem="HLL-DY-Ikg" firstAttribute="leading" secondItem="0bz-4I-eMX" secondAttribute="leading" constant="32" id="3bD-kj-Cum"/>
+                                    <constraint firstItem="hvM-Fh-Z3S" firstAttribute="top" secondItem="6rR-xs-NY7" secondAttribute="bottom" constant="52" id="AuX-1H-vyg"/>
+                                    <constraint firstItem="6rR-xs-NY7" firstAttribute="top" secondItem="HLL-DY-Ikg" secondAttribute="bottom" constant="32" id="Bu9-r9-FDZ"/>
+                                    <constraint firstItem="hvM-Fh-Z3S" firstAttribute="leading" secondItem="0bz-4I-eMX" secondAttribute="leading" constant="32" id="LG6-be-BJi"/>
+                                    <constraint firstAttribute="trailing" secondItem="xJx-wK-rpR" secondAttribute="trailing" id="SAa-w6-Xsf"/>
+                                    <constraint firstItem="xJx-wK-rpR" firstAttribute="bottom" secondItem="0bz-4I-eMX" secondAttribute="bottom" id="TAq-HZ-bpZ"/>
+                                    <constraint firstItem="bqz-W9-41x" firstAttribute="top" secondItem="hvM-Fh-Z3S" secondAttribute="bottom" constant="18" id="ceF-NE-wYM"/>
+                                    <constraint firstItem="HLL-DY-Ikg" firstAttribute="top" secondItem="0bz-4I-eMX" secondAttribute="top" constant="32" id="gD8-gp-cef"/>
+                                    <constraint firstAttribute="bottom" secondItem="xJx-wK-rpR" secondAttribute="bottom" id="oQN-c8-kVG"/>
+                                    <constraint firstItem="6rR-xs-NY7" firstAttribute="leading" secondItem="0bz-4I-eMX" secondAttribute="leading" constant="32" id="oXa-R0-Map"/>
+                                    <constraint firstAttribute="trailing" secondItem="bqz-W9-41x" secondAttribute="trailing" constant="53" id="p1H-Xe-QD8"/>
+                                    <constraint firstAttribute="bottom" secondItem="xJx-wK-rpR" secondAttribute="bottom" id="rxI-Gz-OcX"/>
+                                    <constraint firstItem="0bz-4I-eMX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hvM-Fh-Z3S" secondAttribute="trailing" symbolic="YES" id="uv7-xc-4cS"/>
+                                    <constraint firstAttribute="bottom" secondItem="xJx-wK-rpR" secondAttribute="bottom" id="vYe-eg-BZs"/>
+                                    <constraint firstItem="xJx-wK-rpR" firstAttribute="leading" secondItem="Ik6-2H-15y" secondAttribute="leading" id="zK3-SH-hGg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="S9w-xl-3CP"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="0bz-4I-eMX"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Lx-jX-xGH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ik6-2H-15y" firstAttribute="top" secondItem="6Lx-jX-xGH" secondAttribute="top" id="9uy-5x-iG5"/>
+                            <constraint firstItem="Ik6-2H-15y" firstAttribute="bottom" secondItem="6Lx-jX-xGH" secondAttribute="bottom" id="ggd-zL-c5R"/>
+                            <constraint firstItem="Ik6-2H-15y" firstAttribute="trailing" secondItem="6Lx-jX-xGH" secondAttribute="trailing" id="mm1-ng-q3B"/>
+                            <constraint firstItem="Ik6-2H-15y" firstAttribute="leading" secondItem="6Lx-jX-xGH" secondAttribute="leading" id="p5V-8f-VPi"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="DvH-5N-i1k"/>
+                    <navigationItem key="navigationItem" title="회원가입 (비장애인)" id="DvH-5N-i1k"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gub-1H-qCh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="491"/>
+            <point key="canvasLocation" x="2090" y="82"/>
         </scene>
     </scenes>
     <resources>
-        <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
