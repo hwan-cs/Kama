@@ -26,7 +26,7 @@ class RegisterNonDisabledUserViewController: UIViewController, UITextFieldDelega
         termsAndConditions.isEditable = false
         termsAndConditions.isSelectable = false
         termsAndConditions.layer.cornerRadius = 15
-        view.backgroundColor = UIColor(red: 0.57, green: 0.89, blue: 0.65, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.80, green: 0.95, blue: 0.96, alpha: 1.00)
         // Do any additional setup after loading the view.
     }
     

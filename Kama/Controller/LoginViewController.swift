@@ -6,24 +6,31 @@
 //
 
 import UIKit
+import TweeTextField
 
-class LoginViewController: UIViewController {
-
-    override func viewDidLoad() {
+class LoginViewController: UIViewController, UITextFieldDelegate
+{
+    @IBOutlet var loginView: UIView!
+    @IBOutlet var loginButton: UIButton!
+    
+    @IBOutlet var passwordLoginTextField: TweeAttributedTextField!
+    @IBOutlet var nameLoginTextField: TweeAttributedTextField!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
+        self.hideKeyboard()
+        nameLoginTextField.delegate = self
+        passwordLoginTextField.delegate = self
+        loginView.layer.borderWidth = 1
+        loginView.layer.borderColor = UIColor.black.cgColor
+        loginView.layer.cornerRadius = 20
+        loginButton.layer.cornerRadius = 26
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return false
     }
-    */
-
 }
