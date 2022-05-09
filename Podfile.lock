@@ -299,6 +299,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleMaps (6.2.0):
+    - GoogleMaps/Maps (= 6.2.0)
+  - GoogleMaps/Base (6.2.0)
+  - GoogleMaps/Maps (6.2.0):
+    - GoogleMaps/Base
+  - GooglePlaces (6.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.5.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -358,6 +364,8 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - Gifu
+  - GoogleMaps
+  - GooglePlaces
   - TweeTextField
 
 SPEC REPOS:
@@ -375,6 +383,8 @@ SPEC REPOS:
     - Gifu
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlaces
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -398,6 +408,8 @@ SPEC CHECKSUMS:
   Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
   GoogleAppMeasurement: 6b6a08fd9c71f4dbc89e0e812acca81d797aa342
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
+  GoogleMaps: c1b9de14cecc940b2d334dd4e6dfa116bff4a40e
+  GooglePlaces: c97d96ae68594acb64035c9ca9f26fbfc1d23af1
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
@@ -407,6 +419,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   TweeTextField: 47bf8e7f0433364a7f7e119c45e7f278ea50eb62
 
-PODFILE CHECKSUM: 9d3ccb3b1316bae8599bb4f94ea9ce81098b16fb
+PODFILE CHECKSUM: d1f2e265f0e7ec769762ed1f2b05925df570ded5
 
 COCOAPODS: 1.10.1

@@ -28,6 +28,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         loginButton.layer.cornerRadius = 26
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func loginButtonAction(_ sender: UIButton)
+    {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         self.view.endEditing(true)

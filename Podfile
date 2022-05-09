@@ -12,4 +12,6 @@ target 'Kama' do
   pod 'Firebase/Analytics'
   pod 'TweeTextField'
   pod 'Gifu'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end
