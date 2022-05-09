@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -96,7 +97,7 @@
         <!--회원가입-->
         <scene sceneID="5sx-8K-LWI">
             <objects>
-                <viewController id="rOU-wp-svZ" sceneMemberID="viewController">
+                <viewController id="rOU-wp-svZ" customClass="RegisterDisabledUserViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nJh-ab-fWs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,32 +108,86 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWs-aY-9Na" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="880"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-vY-W0m" customClass="TweePlaceholderTextField" customModule="TweeTextField">
-                                                <rect key="frame" x="52" y="18" width="221" height="91"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-vY-W0m" customClass="TweeAttributedTextField" customModule="TweeTextField">
+                                                <rect key="frame" x="52" y="32" width="300" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="91" id="8Xz-wX-jHw"/>
-                                                    <constraint firstAttribute="width" constant="221" id="DKB-gf-BNh"/>
+                                                    <constraint firstAttribute="height" constant="75" id="8Xz-wX-jHw"/>
+                                                    <constraint firstAttribute="width" constant="300" id="DKB-gf-BNh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="textColor"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoAnimationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoFontSize">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" systemColor="opaqueSeparatorColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeLineColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-HA-X3g" customClass="TweePlaceholderTextField" customModule="TweeTextField">
-                                                <rect key="frame" x="52" y="141" width="221" height="91"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-HA-X3g" customClass="TweeAttributedTextField" customModule="TweeTextField">
+                                                <rect key="frame" x="52" y="139" width="300" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="91" id="h11-5F-4zH"/>
-                                                    <constraint firstAttribute="width" constant="221" id="o4h-le-V2l"/>
+                                                    <constraint firstAttribute="height" constant="75" id="h11-5F-4zH"/>
+                                                    <constraint firstAttribute="width" constant="300" id="o4h-le-V2l"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*비밀번호"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoAnimationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoFontSize">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeLineColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="activeLineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" systemColor="opaqueSeparatorColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2Q-C4-Clp">
-                                                <rect key="frame" x="52" y="284" width="59" height="21"/>
+                                                <rect key="frame" x="52" y="266" width="59" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="sqq-6A-CL1"/>
                                                 </constraints>
@@ -140,14 +195,53 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-dP-iYn">
-                                                <rect key="frame" x="52" y="323" width="329" height="450"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-dP-iYn">
+                                                <rect key="frame" x="40" y="305" width="329" height="450"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="450" id="C6i-E1-wHJ"/>
                                                     <constraint firstAttribute="width" constant="329" id="QQZ-S8-e8y"/>
                                                 </constraints>
-                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in re</mutableString>
+                                                <mutableString key="text">Terms &amp; Conditions
+Updated at 2023-05-09
+General Terms
+By accessing and placing an order with, you confirm that you are in agreement with and bound by the terms of service contained in
+the Terms &amp; Conditions outlined below. These terms apply to the entire website and any email or other type of communication
+between you and
+Under no circumstances shall team be liable for any direct, indirect, special, incidental or consequential damages, including, but not
+limited to, loss of data or profit, arising out of the use, or the inability to use, the materials on this site, even if team or an authorized
+representative has been advised of the possibility of such damages. If your use of materials from this site results in the need for
+servicing, repair or correction of equipment or data, you assume any costs thereof.
+will not be responsible for any outcome that may occur during the course of usage of our resources. We reserve the rights to change
+prices and revise the resources usage policy in any moment.
+License
+Kama grants vou a revocable. non-exclusive. non- transferable. limited license to download, install and use our service strictlv in
+accordance with the terms of this Agreement.
+These Terms &amp; Conditions are a contract between vou and Kama (referred to in these Terms &amp; Conditions as "Kama". "us", "we" or
+"our"'), the provider of the Kama website and the services accessible from the Kama website (which are collectively referred to in
+these Terms &amp; Conditions as the "Kama Service").
+You are agreeing to be bound by these Terms &amp; Conditions. If vou do not aaree to these Terms &amp; Conditions, please do not use the
+Service. In these Terms &amp; Conditions. "vou" refers both to vou as an individual and to the entity vou represent. If vou violate anv of
+these Terms &amp; Conditions, we reserve the right to cancel your account or block access to your account without notice.
+
+Disclaimer
+We are not responsible for any content, code or any other imprecision. We do not provide warranties or guarantees. In no event shall
+we be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action
+of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service. We
+reserve the right to make additions, deletions, or modifications to the contents on the Service at any time without prior notice.
+Our Service and its contents are provided "as is" and "as available" without any warranty or representations of any kind, whether
+express or implied. We are a distributor and not a publisher of the content supplied by third parties; as such, our exercises no
+editorial control over such content and makes no warranty or representation as to the accuracy, reliability or currency of any
+information, content, service or merchandise provided through or accessible via our Service. Without limiting the foregoina, We
+specifically disclaim all warranties and representations in any content transmitted on or in connection with our Service or on sites that
+may appear as links on our Service, or in the products provided as a part of, or otherwise in connection with, our Service, including
+without limitation any warranties of merchantability, fitness for a particular purpose or non-infringement of third party rights. No oral
+advice or written information given by us or any of its affiliates, emplovees, officers, directors, agents, or the like will create a
+warranty. Price and availability information is subject to change without notice. Without limiting the foregoing, we do not warrant that
+our Service will be uninterrupted. uncorrupted. timelv, or error-free.
+Contact Us
+Don't hesitate to contact us if you have any questions.
+Via Email: hwan333@konkuk.ac.kr</mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -172,13 +266,13 @@
                                             <constraint firstItem="n2Q-C4-Clp" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" constant="52" id="McV-mo-arV"/>
                                             <constraint firstItem="n2Q-C4-Clp" firstAttribute="top" secondItem="tSa-HA-X3g" secondAttribute="bottom" constant="52" id="YYV-ja-mv6"/>
                                             <constraint firstAttribute="trailing" secondItem="wk3-Uh-ARn" secondAttribute="trailing" id="Yxf-qh-yjd"/>
-                                            <constraint firstItem="dNI-dP-iYn" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" constant="52" id="df3-py-Zsm"/>
+                                            <constraint firstItem="dNI-dP-iYn" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" constant="40" id="df3-py-Zsm"/>
                                             <constraint firstItem="wk3-Uh-ARn" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" id="em7-zd-ea4"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n2Q-C4-Clp" secondAttribute="trailing" constant="20" symbolic="YES" id="l3t-l8-lxR"/>
                                             <constraint firstItem="QSj-vY-W0m" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" constant="52" id="lxe-Nf-bnz"/>
                                             <constraint firstItem="tSa-HA-X3g" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" constant="52" id="oX3-lm-pXC"/>
                                             <constraint firstItem="tSa-HA-X3g" firstAttribute="top" secondItem="QSj-vY-W0m" secondAttribute="bottom" constant="32" id="qUY-Jv-od4"/>
-                                            <constraint firstItem="QSj-vY-W0m" firstAttribute="top" secondItem="lWs-aY-9Na" secondAttribute="top" constant="18" id="uFb-at-e7p"/>
+                                            <constraint firstItem="QSj-vY-W0m" firstAttribute="top" secondItem="lWs-aY-9Na" secondAttribute="top" constant="32" id="uFb-at-e7p"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -204,26 +298,86 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입" id="IUY-om-rbq"/>
+                    <connections>
+                        <outlet property="dTermsAndConditions" destination="dNI-dP-iYn" id="R5t-UU-4ZM"/>
+                        <outlet property="dUserName" destination="QSj-vY-W0m" id="dVj-zg-Pyf"/>
+                        <outlet property="dUserPassword" destination="tSa-HA-X3g" id="2IR-b6-Jeq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8e5-4o-pKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2090" y="-642"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="3Aw-k8-p0z">
             <objects>
-                <viewController id="rcL-Fz-G2H" sceneMemberID="viewController">
+                <viewController id="rcL-Fz-G2H" customClass="LoginViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TH3-pf-5xR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ao-W7-Vu3">
+                                <rect key="frame" x="80" y="325" width="254" height="246"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tcZ-zB-Too">
+                                        <rect key="frame" x="32" y="32" width="194" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="HAO-7h-dA3"/>
+                                            <constraint firstAttribute="width" constant="194" id="Hfb-Sx-ZN3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-Pd-hCK">
+                                        <rect key="frame" x="32" y="116" width="194" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="4cD-3g-FDG"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="6GY-H6-xO0"/>
+                                            <constraint firstAttribute="width" constant="194" id="QL2-Ri-YPb"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="52" id="zqt-b9-eSx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstItem="NDX-Pd-hCK" firstAttribute="top" secondItem="tcZ-zB-Too" secondAttribute="bottom" constant="32" id="K4K-RX-2Dz"/>
+                                    <constraint firstAttribute="width" constant="254" id="STd-SH-1a9"/>
+                                    <constraint firstItem="tcZ-zB-Too" firstAttribute="top" secondItem="5ao-W7-Vu3" secondAttribute="top" constant="32" id="guL-h8-6hf"/>
+                                    <constraint firstAttribute="height" constant="246" id="iVK-1i-BNC"/>
+                                    <constraint firstItem="NDX-Pd-hCK" firstAttribute="leading" secondItem="5ao-W7-Vu3" secondAttribute="leading" constant="32" id="mOE-Mw-5n2"/>
+                                    <constraint firstItem="tcZ-zB-Too" firstAttribute="leading" secondItem="5ao-W7-Vu3" secondAttribute="leading" constant="32" id="zPH-Oi-s77"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG9-ZM-uzA">
+                                <rect key="frame" x="108.5" y="603" width="197" height="52"/>
+                                <color key="backgroundColor" red="0.56862745100000001" green="0.89411764709999997" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" id="323-Qj-1rC"/>
+                                    <constraint firstAttribute="height" constant="52" id="GHJ-w2-zc4"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7r1-XU-E0V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dG9-ZM-uzA" firstAttribute="top" secondItem="5ao-W7-Vu3" secondAttribute="bottom" constant="32" id="aFt-4a-hv1"/>
+                            <constraint firstItem="5ao-W7-Vu3" firstAttribute="centerY" secondItem="TH3-pf-5xR" secondAttribute="centerY" id="g6H-iw-nMG"/>
+                            <constraint firstItem="dG9-ZM-uzA" firstAttribute="centerX" secondItem="TH3-pf-5xR" secondAttribute="centerX" id="hgo-QL-skX"/>
+                            <constraint firstItem="5ao-W7-Vu3" firstAttribute="centerX" secondItem="TH3-pf-5xR" secondAttribute="centerX" id="zk5-SG-kyL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ThF-hE-4dp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bap-Zo-1Xi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="797"/>
+            <point key="canvasLocation" x="2089.8550724637685" y="796.875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uQa-6a-Sdf">
@@ -246,7 +400,7 @@
         <!--회원가입 (비장애인)-->
         <scene sceneID="zu7-1Z-X2h">
             <objects>
-                <viewController id="bY8-n7-r1q" sceneMemberID="viewController">
+                <viewController id="bY8-n7-r1q" customClass="RegisterNonDisabledUserViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bs6-c0-d6a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,32 +411,86 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siv-gX-7XH" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="880"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-6h-TxV" customClass="TweePlaceholderTextField" customModule="TweeTextField">
-                                                <rect key="frame" x="52" y="18" width="221" height="91"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Cbt-6h-TxV" customClass="TweeAttributedTextField" customModule="TweeTextField">
+                                                <rect key="frame" x="52" y="32" width="300" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="221" id="TMN-mA-UzO"/>
-                                                    <constraint firstAttribute="height" constant="91" id="X0k-qr-hUJ"/>
+                                                    <constraint firstAttribute="width" constant="300" id="TMN-mA-UzO"/>
+                                                    <constraint firstAttribute="height" constant="75" id="X0k-qr-hUJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoAnimationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeLineColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoFontSize">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="activeLineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iOk-y3-ONf" customClass="TweePlaceholderTextField" customModule="TweeTextField">
-                                                <rect key="frame" x="52" y="141" width="221" height="91"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iOk-y3-ONf" customClass="TweeAttributedTextField" customModule="TweeTextField">
+                                                <rect key="frame" x="52" y="139" width="300" height="75"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="91" id="RF5-3j-TkW"/>
-                                                    <constraint firstAttribute="width" constant="221" id="Sl7-eq-mqq"/>
+                                                    <constraint firstAttribute="height" constant="75" id="RF5-3j-TkW"/>
+                                                    <constraint firstAttribute="width" constant="300" id="Sl7-eq-mqq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*비밀번호"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoAnimationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="infoFontSize">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeLineColor">
+                                                        <color key="value" name="AccentColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="activeLineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                                        <real key="value" value="0.20000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-hS-JOr">
-                                                <rect key="frame" x="52" y="284" width="59" height="21"/>
+                                                <rect key="frame" x="52" y="266" width="59" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="MYG-fc-oWs"/>
                                                 </constraints>
@@ -290,14 +498,53 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I1c-uU-IrL">
-                                                <rect key="frame" x="52" y="323" width="329" height="450"/>
-                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I1c-uU-IrL">
+                                                <rect key="frame" x="52" y="305" width="329" height="450"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="450" id="F7d-tk-BUO"/>
                                                     <constraint firstAttribute="width" constant="329" id="oAp-BV-O8W"/>
                                                 </constraints>
-                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in re</mutableString>
+                                                <mutableString key="text">Terms &amp; Conditions
+Updated at 2023-05-09
+General Terms
+By accessing and placing an order with, you confirm that you are in agreement with and bound by the terms of service contained in
+the Terms &amp; Conditions outlined below. These terms apply to the entire website and any email or other type of communication
+between you and
+Under no circumstances shall team be liable for any direct, indirect, special, incidental or consequential damages, including, but not
+limited to, loss of data or profit, arising out of the use, or the inability to use, the materials on this site, even if team or an authorized
+representative has been advised of the possibility of such damages. If your use of materials from this site results in the need for
+servicing, repair or correction of equipment or data, you assume any costs thereof.
+will not be responsible for any outcome that may occur during the course of usage of our resources. We reserve the rights to change
+prices and revise the resources usage policy in any moment.
+License
+Kama grants vou a revocable. non-exclusive. non- transferable. limited license to download, install and use our service strictlv in
+accordance with the terms of this Agreement.
+These Terms &amp; Conditions are a contract between vou and Kama (referred to in these Terms &amp; Conditions as "Kama". "us", "we" or
+"our"'), the provider of the Kama website and the services accessible from the Kama website (which are collectively referred to in
+these Terms &amp; Conditions as the "Kama Service").
+You are agreeing to be bound by these Terms &amp; Conditions. If vou do not aaree to these Terms &amp; Conditions, please do not use the
+Service. In these Terms &amp; Conditions. "vou" refers both to vou as an individual and to the entity vou represent. If vou violate anv of
+these Terms &amp; Conditions, we reserve the right to cancel your account or block access to your account without notice.
+
+Disclaimer
+We are not responsible for any content, code or any other imprecision. We do not provide warranties or guarantees. In no event shall
+we be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action
+of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service. We
+reserve the right to make additions, deletions, or modifications to the contents on the Service at any time without prior notice.
+Our Service and its contents are provided "as is" and "as available" without any warranty or representations of any kind, whether
+express or implied. We are a distributor and not a publisher of the content supplied by third parties; as such, our exercises no
+editorial control over such content and makes no warranty or representation as to the accuracy, reliability or currency of any
+information, content, service or merchandise provided through or accessible via our Service. Without limiting the foregoina, We
+specifically disclaim all warranties and representations in any content transmitted on or in connection with our Service or on sites that
+may appear as links on our Service, or in the products provided as a part of, or otherwise in connection with, our Service, including
+without limitation any warranties of merchantability, fitness for a particular purpose or non-infringement of third party rights. No oral
+advice or written information given by us or any of its affiliates, emplovees, officers, directors, agents, or the like will create a
+warranty. Price and availability information is subject to change without notice. Without limiting the foregoing, we do not warrant that
+our Service will be uninterrupted. uncorrupted. timelv, or error-free.
+Contact Us
+Don't hesitate to contact us if you have any questions.
+Via Email: hwan333@konkuk.ac.kr</mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -323,7 +570,7 @@
                                             <constraint firstItem="zgb-jN-GKC" firstAttribute="leading" secondItem="siv-gX-7XH" secondAttribute="leading" id="C0d-1t-mGw"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kjk-hS-JOr" secondAttribute="trailing" constant="20" symbolic="YES" id="Eyz-qq-BWV"/>
                                             <constraint firstItem="iOk-y3-ONf" firstAttribute="top" secondItem="Cbt-6h-TxV" secondAttribute="bottom" constant="32" id="IOf-4A-lsG"/>
-                                            <constraint firstItem="Cbt-6h-TxV" firstAttribute="top" secondItem="siv-gX-7XH" secondAttribute="top" constant="18" id="bH3-ex-uqk"/>
+                                            <constraint firstItem="Cbt-6h-TxV" firstAttribute="top" secondItem="siv-gX-7XH" secondAttribute="top" constant="32" id="bH3-ex-uqk"/>
                                             <constraint firstAttribute="bottom" secondItem="zgb-jN-GKC" secondAttribute="bottom" id="dV5-1J-Qzr"/>
                                             <constraint firstItem="I1c-uU-IrL" firstAttribute="leading" secondItem="siv-gX-7XH" secondAttribute="leading" constant="52" id="ihe-CU-1Hd"/>
                                             <constraint firstItem="Cbt-6h-TxV" firstAttribute="leading" secondItem="siv-gX-7XH" secondAttribute="leading" constant="52" id="lZZ-bZ-rGV"/>
@@ -355,6 +602,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입 (비장애인)" id="DvH-5N-i1k"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="iOk-y3-ONf" id="h1f-zE-OMb"/>
+                        <outlet property="termsAndConditions" destination="I1c-uU-IrL" id="hqw-T8-mhf"/>
+                        <outlet property="userNameTextField" destination="Cbt-6h-TxV" id="e4O-KP-7FW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gub-1H-qCh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,11 +614,20 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
