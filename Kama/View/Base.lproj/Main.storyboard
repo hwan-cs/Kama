@@ -120,7 +120,7 @@
                                                     <constraint firstAttribute="height" constant="75" id="8Xz-wX-jHw"/>
                                                     <constraint firstAttribute="width" constant="300" id="DKB-gf-BNh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
@@ -191,6 +191,11 @@
                                                         <real key="value" value="0.20000000000000001"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="dPasswordEditingChanged:" destination="rOU-wp-svZ" eventType="editingChanged" id="MZg-JV-fpT"/>
+                                                    <action selector="dPasswordEditingDidBegin:" destination="rOU-wp-svZ" eventType="editingDidBegin" id="yi1-7n-k5U"/>
+                                                    <action selector="dPasswordEditingDidEnd:" destination="rOU-wp-svZ" eventType="editingDidEnd" id="aAo-BL-dcS"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2Q-C4-Clp">
                                                 <rect key="frame" x="52" y="266" width="59" height="21"/>
@@ -735,7 +740,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5q-ds-yMn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3037.68115942029" y="81.696428571428569"/>
+            <point key="canvasLocation" x="3078" y="82"/>
         </scene>
     </scenes>
     <resources>

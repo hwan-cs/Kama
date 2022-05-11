@@ -35,6 +35,42 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
         self.view.endEditing(true)
         return false
     }
+    //When dUserName editing begins
+    @IBAction func dPasswordEditingDidBegin(_ sender: TweeAttributedTextField)
+    {
+        
+    }
+    
+    //While editing
+    @IBAction func dPasswordEditingChanged(_ sender: TweeAttributedTextField)
+    {
+        if let userInput = sender.text
+        {
+            if userInput.count == 0
+            {
+                sender.activeLineColor = .blue
+                sender.hideInfo(animated: true)
+            }
+            else if userInput.count < 3
+            {
+                sender.activeLineColor = .red
+                sender.infoTextColor = .red
+                sender.showInfo("3글자 이상 입력하세요", animated: true)
+            }
+            else
+            {
+                sender.activeLineColor = .green
+                sender.infoTextColor = .green
+                sender.showInfo("올바른 형식입니다", animated: true)
+            }
+        }
+    }
+    
+    //When editing ended
+    @IBAction func dPasswordEditingDidEnd(_ sender: TweeAttributedTextField)
+    {
+        
+    }
 }
 extension UIViewController
 {
@@ -48,5 +84,14 @@ extension UIViewController
     @objc func dismissKeyboard()
     {
         view.endEditing(true)
+    }
+}
+
+extension String
+{
+    var isValidEmail: Bool
+    {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegEx).evaluate(with: self)
     }
 }
