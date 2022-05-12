@@ -9,11 +9,15 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
+import Firebase
+import FirebaseFirestore
 
 class MainViewController: UIViewController
 {
 
     @IBOutlet fileprivate weak var mapView: GMSMapView!
+    
+    let db = Firestore.firestore()
     
     var locationManager: CLLocationManager?
     
@@ -33,6 +37,31 @@ class MainViewController: UIViewController
             mapView.camera = camera
         }
         // Do any additional setup after loading the view.
+        db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
+        { querySnapShot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let snapshotDocuments = querySnapShot?.documents
+                {
+                    for doc in snapshotDocuments
+                    {
+                        let data = doc.data()
+                        if let geopoint = data["location"] as? GeoPoint
+                        {
+                            let marker = GMSMarker()
+                            marker.position = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
+                            marker.title = data["name"] as! String
+                            print(data["name"] as! String)
+                            marker.map = self.mapView
+                        }
+                    }
+                }
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -61,13 +90,8 @@ extension MainViewController: CLLocationManagerDelegate
     {
         if let location = locations.first
         {
-            print("new location is \(location)")
+//            print("new location is \(location)")
         }
-        
-//        let marker = GMSMarker()
-//        marker.position = location!.coordinate
-//        marker.title = "사용자"
-//        marker.map = mapView
     }
 
 }
