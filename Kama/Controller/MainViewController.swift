@@ -14,19 +14,23 @@ import FirebaseFirestore
 
 class MainViewController: UIViewController
 {
-
-    @IBOutlet fileprivate weak var mapView: GMSMapView!
+    
+    @IBOutlet var mapView: GMSMapView!
     
     let db = Firestore.firestore()
     
     var locationManager: CLLocationManager?
     
+    var isHelper: Bool?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 0.98, green: 0.97, blue: 0.92, alpha: 1.00)
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()
+        mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         mapView.settings.compassButton = true
@@ -36,7 +40,7 @@ class MainViewController: UIViewController
             let camera = GMSCameraPosition.camera(withLatitude: (location.coordinate.latitude), longitude: (location.coordinate.longitude), zoom: 17.0)
             mapView.camera = camera
         }
-        // Do any additional setup after loading the view.
+
         db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
         { querySnapShot, error in
             if let e = error
@@ -62,17 +66,34 @@ class MainViewController: UIViewController
                 }
             }
         }
+        
+        if isHelper == false
+        {
+            let helpButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2-147, y: UIScreen.main.bounds.height-110, width: 294, height: 75))
+            helpButton.setTitle("도와주세요!", for: .normal)
+            helpButton.setTitleColor(.black, for: .normal)
+            helpButton.backgroundColor = UIColor(red: 0.83, green: 0.89, blue: 0.80, alpha: 1.00)
+            helpButton.layer.cornerRadius = 37.5
+            helpButton.layer.shadowColor = UIColor.black.cgColor
+            helpButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+            helpButton.layer.shadowOpacity = 0.7
+            view.addSubview(helpButton)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool)
     {
         locationManager?.stopUpdatingLocation()
     }
+    
 }
 
 extension MainViewController: GMSMapViewDelegate
 {
-    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+    {
+        print("did tap \(marker.title)")
+    }
 }
 
 extension MainViewController: CLLocationManagerDelegate

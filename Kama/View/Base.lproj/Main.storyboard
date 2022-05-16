@@ -426,7 +426,6 @@ Via Email: hwan333@konkuk.ac.kr</string>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG9-ZM-uzA">
                                 <rect key="frame" x="108.5" y="603" width="197" height="52"/>
-                                <color key="backgroundColor" red="0.56862745100000001" green="0.89411764709999997" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="197" id="323-Qj-1rC"/>
                                     <constraint firstAttribute="height" constant="52" id="GHJ-w2-zc4"/>
@@ -705,9 +704,9 @@ Via Email: hwan333@konkuk.ac.kr</string>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-8S-s6Q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="카마" id="jrv-9P-lc3">
-                                        <barButtonItem key="leftBarButtonItem" image="location.fill" catalog="system" id="Jca-WX-7FJ"/>
                                         <rightBarButtonItems>
                                             <barButtonItem image="bell.fill" catalog="system" id="tsx-r6-4Nv"/>
                                             <barButtonItem image="person.fill" catalog="system" id="gM1-TP-yLB"/>
@@ -735,7 +734,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="SVa-dO-QSV" id="i9a-c1-RXz"/>
+                        <outlet property="mapView" destination="SVa-dO-QSV" id="G5P-ox-0eL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5q-ds-yMn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -745,7 +744,6 @@ Via Email: hwan333@konkuk.ac.kr</string>
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
-        <image name="location.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -59,8 +59,8 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
             }
             else
             {
-                sender.activeLineColor = .green
-                sender.infoTextColor = .green
+                sender.activeLineColor = .systemGreen
+                sender.infoTextColor = .systemGreen
                 sender.showInfo("올바른 형식입니다", animated: true)
             }
         }
