@@ -77,6 +77,7 @@ class MainViewController: UIViewController
             helpButton.layer.shadowColor = UIColor.black.cgColor
             helpButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
             helpButton.layer.shadowOpacity = 0.7
+            helpButton.addTarget(self, action: #selector(helpButtonTapped), for: .touchUpInside)
             view.addSubview(helpButton)
         }
     }
@@ -86,6 +87,13 @@ class MainViewController: UIViewController
         locationManager?.stopUpdatingLocation()
     }
     
+    @objc func helpButtonTapped()
+    {
+        print("help button tapped")
+        let vc = HelpViewController()
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
 extension MainViewController: GMSMapViewDelegate

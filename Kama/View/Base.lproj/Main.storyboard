@@ -461,6 +461,21 @@ Via Email: hwan333@konkuk.ac.kr</string>
             </objects>
             <point key="canvasLocation" x="2089.8550724637685" y="796.875"/>
         </scene>
+        <!--Help View Controller-->
+        <scene sceneID="o5u-eH-67r">
+            <objects>
+                <viewController id="9yE-e7-9l9" customClass="HelpViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xlz-Qw-dJA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cXz-QA-wtw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxq-jj-4gO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3077" y="797"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="uQa-6a-Sdf">
             <objects>
