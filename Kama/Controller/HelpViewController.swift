@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import TweeTextField
 
-class HelpViewController: UIViewController
+class HelpViewController: UIViewController, UITextFieldDelegate
 {
     
-    let defaultHeight: CGFloat = 300
+    let defaultHeight: CGFloat = 400
     let dismissibleHeight: CGFloat = 200
     let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 64
     // keep updated with new height
@@ -20,7 +21,7 @@ class HelpViewController: UIViewController
     lazy var containerView: UIView =
     {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 0.98, green: 0.97, blue: 0.92, alpha: 1.00)
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
         return view
@@ -39,27 +40,40 @@ class HelpViewController: UIViewController
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "Get Started"
+        label.text = "도움 요청하기"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
-
-    lazy var notesLabel: UILabel =
+    
+    lazy var titleHelp: TweeAttributedTextField =
     {
-        let label = UILabel()
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. \n\nUt morbi tincidunt augue interdum velit euismod in pellentesque massa. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Eget nullam non nisi est sit amet. Odio pellentesque diam volutpat commodo. Id eu nisl nunc mi ipsum faucibus vitae.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Ut morbi tincidunt augue interdum velit euismod in pellentesque massa."
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .darkGray
-        label.numberOfLines = 0
-        return label
+        let titleLabel = TweeAttributedTextField()
+        titleLabel.delegate = self
+        titleLabel.infoTextColor = UIColor.systemBlue
+        titleLabel.infoAnimationDuration = 0.2
+        titleLabel.infoFontSize = 14
+        titleLabel.activeLineColor = .systemBlue
+        titleLabel.activeLineWidth = 1
+        titleLabel.animationDuration = 0.2
+        titleLabel.lineColor = .lightGray
+        titleLabel.placeholderColor = .lightGray
+        titleLabel.placeholderInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
+        titleLabel.lineWidth = 1
+        titleLabel.tweePlaceholder = "제목"
+        titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        titleLabel.layer.cornerRadius = 22
+        titleLabel.font = .systemFont(ofSize: 16)
+        titleLabel.textColor = .darkGray
+        return titleLabel
     }()
-
+    
     lazy var contentStackView: UIStackView =
     {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, notesLabel, spacer])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, spacer])
         stackView.axis = .vertical
-        stackView.spacing = 12.0
+        stackView.bringSubviewToFront(titleHelp)
+        stackView.spacing = 30.0
         return stackView
     }()
     
@@ -70,6 +84,7 @@ class HelpViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.hideKeyboard()
         setupView()
         setupConstraints()
         setupPanGesture()
@@ -90,6 +105,12 @@ class HelpViewController: UIViewController
         dimmedView.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
+        let caLayer = CALayer()
+        caLayer.frame = CGRect(x: -30, y: 0, width: UIScreen.main.bounds.width-40, height: 65)
+        caLayer.cornerRadius = 30
+        caLayer.borderColor = UIColor.lightGray.cgColor
+        caLayer.borderWidth = 1
+        titleHelp.layer.addSublayer(caLayer)
         // 5. Set static constraints
         NSLayoutConstraint.activate([
             // set dimmedView edges to superview
@@ -102,10 +123,14 @@ class HelpViewController: UIViewController
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
             contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
-            contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            contentStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 50),
+            contentStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -50),
+            
         ])
-        
+        NSLayoutConstraint.activate([
+            // set dimmedView edges to superview
+
+            ])
         // 6. Set container to default height
         containerViewHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: defaultHeight)
         // 7. Set bottom constant to 0
@@ -227,7 +252,12 @@ class HelpViewController: UIViewController
             break
         }
     }
-
+    
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        animateContainerHeight(maximumContainerHeight)
+    }
+    
     func animateContainerHeight(_ height: CGFloat)
     {
         UIView.animate(withDuration: 0.4)
@@ -239,5 +269,23 @@ class HelpViewController: UIViewController
         }
         // Save current height
         currentContainerHeight = height
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return false
+    }
+}
+extension CALayer
+{
+    func innerBorder(borderOffset: CGFloat = 24.0, borderColor: UIColor = UIColor.blue, borderWidth: CGFloat = 2)
+    {
+        let innerBorder = CALayer()
+        innerBorder.frame = CGRect(x: borderOffset, y: borderOffset, width: frame.size.width - 2 * borderOffset, height: frame.size.height - 2 * borderOffset)
+        innerBorder.borderColor = borderColor.cgColor
+        innerBorder.borderWidth = borderWidth
+        innerBorder.name = "innerBorder"
+        insertSublayer(innerBorder, at: 0)
     }
 }
