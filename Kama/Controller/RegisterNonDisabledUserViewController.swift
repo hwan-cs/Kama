@@ -11,6 +11,7 @@ import TweeTextField
 class RegisterNonDisabledUserViewController: UIViewController, UITextFieldDelegate
 {
 
+    @IBOutlet var ContentView: UIView!
     @IBOutlet var userNameTextField: TweeAttributedTextField!
     @IBOutlet var passwordTextField: TweeAttributedTextField!
     @IBOutlet var termsAndConditions: UITextView!
@@ -27,6 +28,7 @@ class RegisterNonDisabledUserViewController: UIViewController, UITextFieldDelega
         termsAndConditions.isSelectable = false
         termsAndConditions.layer.cornerRadius = 15
         view.backgroundColor = UIColor(red: 0.80, green: 0.95, blue: 0.96, alpha: 1.00)
+        ContentView.backgroundColor = UIColor(red: 0.98, green: 0.97, blue: 0.92, alpha: 1.00)
         // Do any additional setup after loading the view.
     }
     

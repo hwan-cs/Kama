@@ -310,6 +310,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입" id="IUY-om-rbq"/>
                     <connections>
+                        <outlet property="ConteView" destination="lWs-aY-9Na" id="WIC-62-oO1"/>
                         <outlet property="dTermsAndConditions" destination="dNI-dP-iYn" id="R5t-UU-4ZM"/>
                         <outlet property="dUserName" destination="QSj-vY-W0m" id="dVj-zg-Pyf"/>
                         <outlet property="dUserPassword" destination="tSa-HA-X3g" id="2IR-b6-Jeq"/>
@@ -700,6 +701,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                     </view>
                     <navigationItem key="navigationItem" title="회원가입 (비장애인)" id="DvH-5N-i1k"/>
                     <connections>
+                        <outlet property="ContentView" destination="siv-gX-7XH" id="TkU-85-is7"/>
                         <outlet property="passwordTextField" destination="iOk-y3-ONf" id="h1f-zE-OMb"/>
                         <outlet property="termsAndConditions" destination="I1c-uU-IrL" id="hqw-T8-mhf"/>
                         <outlet property="userNameTextField" destination="Cbt-6h-TxV" id="e4O-KP-7FW"/>
