@@ -7,6 +7,7 @@
 
 import UIKit
 import TweeTextField
+import FirebaseFirestore
 
 class LoginViewController: UIViewController, UITextFieldDelegate
 {
@@ -15,6 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     
     @IBOutlet var passwordLoginTextField: TweeAttributedTextField!
     @IBOutlet var nameLoginTextField: TweeAttributedTextField!
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad()
     {
@@ -38,8 +41,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
         vc.modalPresentationStyle = .fullScreen
-        vc.isHelper = false
-        self.present(vc, animated: true)
+        db.collection("userDB").whereField("userName", isNotEqualTo: false).getDocuments
+        { querySnapShot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                var flag = true
+                if let snapshotDocuments = querySnapShot?.documents
+                {
+                    for doc in snapshotDocuments
+                    {
+                        let data = doc.data()
+                        if let userName = data["userName"] as? String
+                        {
+                            flag = false
+                            if userName == self.nameLoginTextField.text!
+                            {
+                                if let password = data["password"] as? String
+                                {
+                                    if password == self.passwordLoginTextField.text!
+                                    {
+                                        if let disabled = data["disabled"] as? Bool
+                                        {
+                                            vc.isHelper = disabled == true ? false : true
+                                            self.present(vc, animated: true)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                let alert = UIAlertController(title: "아이디나 비밀번호를 다시 확인해주세요", message: "", preferredStyle: .alert)
+                self.present(alert, animated: true, completion: nil)
+                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool

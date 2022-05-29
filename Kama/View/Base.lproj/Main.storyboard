@@ -268,6 +268,9 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                                 <buttonConfiguration key="configuration" style="plain" title="동의하고 가입하기">
                                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="DUserSignUp:" destination="rOU-wp-svZ" eventType="touchUpInside" id="IEz-hc-Suc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -658,6 +661,9 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                                 <buttonConfiguration key="configuration" style="plain" title="동의하고 가입하기">
                                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="NDUserSignUp:" destination="bY8-n7-r1q" eventType="touchUpInside" id="vat-Mx-mQM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

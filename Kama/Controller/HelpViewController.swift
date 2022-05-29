@@ -407,7 +407,8 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             {
                 print(location.coordinate)
                 let firestoreLoc = FirebaseFirestore.GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                ref.setData(["user": "테스트 유저", "location": firestoreLoc, "name": self.titleHelp.text!, "time": self.datePicker.date,"category": "심부름을 도와주세요"])
+                ref.setData(["user": "테스트 유저", "location": firestoreLoc, "name": self.titleHelp.text!, "time": self.datePicker.date,"category": "심부름을 도와주세요",
+                             "description":self.helpDetail.text!])
                 { error in
                 if let e = error
                     {

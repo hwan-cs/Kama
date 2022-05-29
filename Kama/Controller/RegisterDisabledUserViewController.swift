@@ -7,6 +7,7 @@
 
 import UIKit
 import TweeTextField
+import FirebaseFirestore
 
 class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
 {
@@ -15,6 +16,8 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
     @IBOutlet var dUserName: TweeAttributedTextField!
     @IBOutlet var dUserPassword: TweeAttributedTextField!
     @IBOutlet var dTermsAndConditions: UITextView!
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad()
     {
@@ -72,6 +75,32 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
     @IBAction func dPasswordEditingDidEnd(_ sender: TweeAttributedTextField)
     {
         
+    }
+    
+    @IBAction func DUserSignUp(_ sender: UIButton)
+    {
+        let alert = UIAlertController(title: "회원가입 약관을 다 읽었으며 동의합니다", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "예", style: .default)
+        { [self] (action) in
+            let ref = self.db.collection("userDB").document()
+            ref.setData(["userName":self.dUserName.text!, "password": self.dUserPassword.text!, "disabled": true])
+            { error in
+            if let e = error
+                {
+                    print("There was an issue sending data to Firestore: \(e)")
+                }
+                else
+                {
+                    _ = navigationController?.popViewController(animated: true)
+                    print("Successfully saved data.")
+                }
+            }
+        }
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("Alert dismissed")
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
 extension UIViewController
