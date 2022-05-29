@@ -7,6 +7,8 @@
 
 import UIKit
 import TweeTextField
+import FirebaseFirestore
+import CoreLocation
 import DropDown
 
 class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
@@ -19,6 +21,10 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     var currentContainerHeight: CGFloat = 300
     var dropDown = DropDown()
     let scrollView = UIScrollView()
+    
+    let db = Firestore.firestore()
+    
+    var locationManager: CLLocationManager?
     
     // 1
     lazy var containerView: UIView =
@@ -125,17 +131,21 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         return label
     }()
     
-    let datePicker : UIView =
+    lazy var datePicker: UIDatePicker =
     {
         let picker = UIDatePicker()
-        let foo = UIView()
         picker.preferredDatePickerStyle = .compact
         picker.locale = Locale(identifier: "ko-KR")
         picker.timeZone = .autoupdatingCurrent
-        picker.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        foo.addSubview(picker)
+        return picker
+    }()
+    
+    lazy var datePickerView : UIView =
+    {
+        let foo = UIView()
+        foo.addSubview(datePicker)
         foo.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        foo.bringSubviewToFront(picker)
+        foo.bringSubviewToFront(datePicker)
         return foo
     }()
     
@@ -171,6 +181,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         register.layer.borderColor = UIColor.black.cgColor
         register.backgroundColor = UIColor(red: 0.83, green: 0.89, blue: 0.80, alpha: 1.00)
         register.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        register.addTarget(self, action: #selector(registerHelpTapped), for: .touchUpInside)
         return register
     }()
     
@@ -184,7 +195,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var contentStackView: UIStackView =
     {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, dropDownButton, deadlineLabel, datePicker,  pointLabel, pointTextField, registerButton, foo, spacer])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, dropDownButton, deadlineLabel, datePickerView,  pointLabel, pointTextField, registerButton, foo, spacer])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 30
@@ -205,6 +216,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         super.viewDidLoad()
         self.hideKeyboard()
         helpDetail.delegate = self
+        locationManager = CLLocationManager()
         setupView()
         setupConstraints()
         setupPanGesture()
@@ -333,11 +345,9 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     {
         let translation = gesture.translation(in: view)
         // Drag to top will be minus value and vice versa
-        print("Pan gesture y offset: \(translation.y)")
 
         // Get drag direction
         let isDraggingDown = translation.y > 0
-        print("Dragging direction: \(isDraggingDown ? "going down" : "going up")")
 
         // New height is based on value of dragging plus current container height
         let newHeight = currentContainerHeight - translation.y
@@ -385,6 +395,36 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     @objc func categoryButtonTapped()
     {
         dropDown.show()
+    }
+    
+    @objc func registerHelpTapped()
+    {
+        let alert = UIAlertController(title: "저장하시겠습니까?", message: "한번 저장하면 다시 날짜를 바꿀 수 없습니다.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "예", style: .default)
+        { (action) in
+            let ref = self.db.collection("kamaDB").document()
+            if let location = self.locationManager?.location
+            {
+                print(location.coordinate)
+                let firestoreLoc = FirebaseFirestore.GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                ref.setData(["user": "테스트 유저", "location": firestoreLoc, "name": self.titleHelp.text!, "time": self.datePicker.date,"category": "심부름을 도와주세요"])
+                { error in
+                if let e = error
+                    {
+                        print("There was an issue sending data to Firestore: \(e)")
+                    }
+                    else
+                    {
+                        print("Successfully saved data.")
+                    }
+                }
+            }
+        }
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("Alert dismissed")
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField)
