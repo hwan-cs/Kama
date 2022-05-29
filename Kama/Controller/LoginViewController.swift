@@ -66,8 +66,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                                     {
                                         if let disabled = data["disabled"] as? Bool
                                         {
-                                            vc.isHelper = disabled == true ? false : true
-                                            self.present(vc, animated: true)
+                                            if let id = data["id"] as? String
+                                            {
+                                                vc.user = KamaUser(name: userName, disabled: disabled, id: id)
+                                                self.present(vc, animated: true)
+                                            }
                                         }
                                     }
                                 }

@@ -21,7 +21,7 @@ class MainViewController: UIViewController
     
     var locationManager: CLLocationManager?
     
-    var isHelper: Bool?
+    var user: KamaUser?
     
     override func viewDidLoad()
     {
@@ -59,6 +59,7 @@ class MainViewController: UIViewController
                             let marker = GMSMarker()
                             marker.position = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
                             marker.title = data["name"] as! String
+                            marker.userData = data["uuid"] as! String
                             print(data["name"] as! String)
                             marker.map = self.mapView
                         }
@@ -67,7 +68,7 @@ class MainViewController: UIViewController
             }
         }
         
-        if isHelper == false
+        if user!.disabled == true
         {
             let helpButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2-147, y: UIScreen.main.bounds.height-110, width: 294, height: 75))
             helpButton.setTitle("도와주세요!", for: .normal)
@@ -91,8 +92,13 @@ class MainViewController: UIViewController
     {
         print("help button tapped")
         let vc = HelpViewController()
+        vc.user = self.user
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
+    }
+    @IBAction func logOutButtonTapped(_ sender: UIBarButtonItem)
+    {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -100,7 +106,43 @@ extension MainViewController: GMSMapViewDelegate
 {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
     {
-        print("did tap \(marker.title)")
+
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool
+    {
+        if let uuid = marker.userData as? String
+        {
+            db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
+            { querySnapShot, error in
+                if let e = error
+                {
+                    print("There was an issue retrieving data from Firestore \(e)")
+                }
+                else
+                {
+                    if let snapshotDocuments = querySnapShot?.documents
+                    {
+                        for doc in snapshotDocuments
+                        {
+                            let data = doc.data()
+                            if let fsuuid = data["uuid"] as? String
+                            {
+                                if fsuuid == uuid
+                                {
+                                    let help = KamaHelp(category: data["category"] as! String, description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, name: data["name"] as! String, time: data["time"] as! Timestamp, user: data["user"] as! String, uuid: data["uuid"] as! String)
+                                    let vc = DetailViewController()
+                                    vc.help = help
+                                    vc.modalPresentationStyle = .overCurrentContext
+                                    self.present(vc, animated: true)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true
     }
 }
 

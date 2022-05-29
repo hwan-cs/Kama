@@ -1,8 +1,8 @@
 //
-//  HelpViewController.swift
+//  DetailViewController.swift
 //  Kama
 //
-//  Created by Jung Hwan Park on 2022/05/24.
+//  Created by Jung Hwan Park on 2022/05/30.
 //
 
 import UIKit
@@ -11,11 +11,11 @@ import FirebaseFirestore
 import CoreLocation
 import DropDown
 
-class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
+class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
     let defaultHeight: CGFloat = 550
     let dismissibleHeight: CGFloat = 250
-    let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
+    let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 200
     // keep updated with new height
     var currentContainerHeight: CGFloat = 300
     var dropDown = DropDown()
@@ -23,9 +23,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     let db = Firestore.firestore()
     
-    var user: KamaUser?
-    
-    var locationManager: CLLocationManager?
+    var help: KamaHelp?
     
     // 1
     lazy var containerView: UIView =
@@ -50,30 +48,22 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "도움 요청하기"
+        label.text = "제목"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
     
-    lazy var titleHelp: TweeAttributedTextField =
+    lazy var titleHelp: UILabel =
     {
-        let titleLabel = TweeAttributedTextField()
-        titleLabel.delegate = self
-        titleLabel.infoTextColor = UIColor.systemBlue
-        titleLabel.infoAnimationDuration = 0.2
-        titleLabel.infoFontSize = 14
-        titleLabel.activeLineColor = .systemBlue
-        titleLabel.activeLineWidth = 1
-        titleLabel.animationDuration = 0.2
-        titleLabel.lineColor = .lightGray
-        titleLabel.placeholderColor = .lightGray
-        titleLabel.placeholderInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
-        titleLabel.lineWidth = 1
-        titleLabel.tweePlaceholder = "제목"
+        let titleLabel = UILabel()
+        titleLabel.text = "\t\(help!.name)"
         titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         titleLabel.layer.cornerRadius = 25
         titleLabel.font = .systemFont(ofSize: 16)
         titleLabel.textColor = .darkGray
+        titleLabel.layer.cornerRadius = 25
+        titleLabel.layer.borderColor = UIColor.lightGray.cgColor
+        titleLabel.layer.borderWidth = 1
         return titleLabel
     }()
     
@@ -85,10 +75,10 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         return title
     }()
     
-    lazy var helpDetail: UITextView =
+    lazy var helpDetail: UILabel =
     {
-        let textView = UITextView()
-        textView.text = "   요청 세부사항을 입력하세요"
+        let textView = UILabel()
+        textView.text = "\t\(help!.description!)"
         textView.textColor = UIColor.lightGray
         textView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         textView.font = .systemFont(ofSize: 16)
@@ -98,113 +88,82 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         return textView
     }()
     
-    lazy var dropDownButton: UIButton =
+    lazy var categoryTitle: UILabel =
     {
-        let dropDownButton = UIButton()
-        dropDownButton.backgroundColor = .white
-        dropDownButton.layer.borderWidth = 1
-        dropDownButton.layer.cornerRadius = 20
-        dropDownButton.setTitle("카테고리를 선택하세요", for: .normal)
-        dropDownButton.setTitleColor(.black, for: .normal)
-        DropDown.appearance().textFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        dropDown.anchorView = dropDownButton
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!-12)
-        dropDown.backgroundColor = .white
-        dropDown.selectedTextColor = .white
-        dropDown.selectionBackgroundColor = UIColor.lightGray
-        dropDown.direction = .bottom
-        dropDown.cornerRadius = 10
-        dropDown.selectionAction =
-        { [unowned self] (index: Int, item: String) in
-            dropDownButton.setTitle(item, for: .normal)
-        }
-        let data = ["카테고리 1", "카테고리 2","카테고리 3","카테고리 4","카테고리 5","카테고리 6","카테고리 7","카테고리 8","카테고리 9","카테고리 10"]
-        dropDown.dataSource = data
-        dropDownButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
-        return dropDownButton
+        let title = UILabel()
+        title.text = "카테고리"
+        title.font = .boldSystemFont(ofSize: 20)
+        return title
+    }()
+    
+    lazy var categoryLabel: UILabel =
+    {
+        let categoryLabel = UILabel()
+        categoryLabel.text = "\t\(help!.category)"
+        categoryLabel.font = .systemFont(ofSize: 16)
+        categoryLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        categoryLabel.layer.cornerRadius = 25
+        categoryLabel.layer.borderWidth = 1
+        categoryLabel.layer.borderColor = UIColor.lightGray.cgColor
+        return categoryLabel
+    }()
+    
+    lazy var deadlineTitle: UILabel =
+    {
+        let label = UILabel()
+        label.text = "데드라인"
+        label.font = .boldSystemFont(ofSize: 20)
+        return label
     }()
     
     lazy var deadlineLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "데드라인 날짜 및 시간 설정"
-        label.font = .boldSystemFont(ofSize: 16)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm E, d MMM y"
+        label.text = formatter.string(from: help!.time.dateValue())
+        label.font = .boldSystemFont(ofSize: 20)
         return label
-    }()
-    
-    lazy var datePicker: UIDatePicker =
-    {
-        let picker = UIDatePicker()
-        picker.preferredDatePickerStyle = .compact
-        picker.locale = Locale(identifier: "ko-KR")
-        picker.timeZone = .autoupdatingCurrent
-        return picker
-    }()
-    
-    lazy var datePickerView : UIView =
-    {
-        let foo = UIView()
-        foo.addSubview(datePicker)
-        foo.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        foo.bringSubviewToFront(datePicker)
-        return foo
     }()
     
     lazy var pointLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "지급할 포인트"
+        label.text = "포인트: "
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
     
-    lazy var pointTextField: TweeBorderedTextField =
+    lazy var userName: UILabel =
     {
-        let textfield = TweeBorderedTextField()
-        textfield.delegate = self
-        textfield.lineColor = .lightGray
-        textfield.placeholderColor = .lightGray
-        textfield.tweePlaceholder = "포인트"
-        textfield.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textfield.layer.cornerRadius = 25
-        textfield.font = .systemFont(ofSize: 16)
-        textfield.textColor = .darkGray
-        return textfield
+        let label = UILabel()
+        label.text = "도움 요청인: \(help!.user)"
+        label.font = .boldSystemFont(ofSize: 20)
+        return label
     }()
-    
-    lazy var registerButton: UIButton =
+        
+    lazy var okButton: UIButton =
     {
         let register = UIButton()
-        register.setTitle("등록하기", for: .normal)
-        register.layer.cornerRadius = 20
+        register.setTitle("확인", for: .normal)
+        register.layer.cornerRadius = 25
         register.setTitleColor(.black, for: .normal)
         register.layer.borderWidth = 1
         register.layer.borderColor = UIColor.black.cgColor
         register.backgroundColor = UIColor(red: 0.83, green: 0.89, blue: 0.80, alpha: 1.00)
         register.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        register.addTarget(self, action: #selector(registerHelpTapped), for: .touchUpInside)
+        register.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
         return register
-    }()
-    
-    let foo : UIView =
-    {
-        let foo = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        foo.backgroundColor = .brown
-        return foo
     }()
     
     lazy var contentStackView: UIStackView =
     {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, dropDownButton, deadlineLabel, datePickerView,  pointLabel, pointTextField, registerButton, foo, spacer])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, categoryTitle, categoryLabel, deadlineTitle, deadlineLabel,
+                                                       pointLabel, userName, okButton, spacer])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 30
-        stackView.setCustomSpacing(30, after: titleHelp)
-        stackView.setCustomSpacing(10.0, after: helpDetailTitle)
-        stackView.setCustomSpacing(10.0, after: deadlineLabel)
-        stackView.setCustomSpacing(70, after: datePicker)
-        stackView.setCustomSpacing(300, after: registerButton)
         return stackView
     }()
     
@@ -216,8 +175,6 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     {
         super.viewDidLoad()
         self.hideKeyboard()
-        helpDetail.delegate = self
-        locationManager = CLLocationManager()
         setupView()
         setupConstraints()
         setupPanGesture()
@@ -241,13 +198,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         dimmedView.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let caLayer = CALayer()
-        caLayer.frame = CGRect(x: -15, y: 0, width: UIScreen.main.bounds.width-30, height: 65)
-        caLayer.cornerRadius = 25
-        caLayer.borderColor = UIColor.lightGray.cgColor
-        caLayer.borderWidth = 1
-        titleHelp.layer.addSublayer(caLayer)
+    
         // 5. Set static constraints
         NSLayoutConstraint.activate([
             // set dimmedView edges to superview
@@ -262,7 +213,6 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             // set container static constraint (trailing & leading)
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dropDownButton.heightAnchor.constraint(equalToConstant: 70),
             contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 32),
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -32),
             contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
@@ -305,7 +255,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
-//        animateShowDimmedView()
+        //animateShowDimmedView()
         animatePresentContainer()
     }
     
@@ -340,6 +290,11 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
         view.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func okButtonTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer)
@@ -392,44 +347,6 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             break
         }
     }
-    
-    @objc func categoryButtonTapped()
-    {
-        dropDown.show()
-    }
-    
-    @objc func registerHelpTapped()
-    {
-        let alert = UIAlertController(title: "저장하시겠습니까?", message: "한번 저장하면 다시 날짜를 바꿀 수 없습니다.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "예", style: .default)
-        { (action) in
-            let ref = self.db.collection("kamaDB").document()
-            if let location = self.locationManager?.location
-            {
-                print(location.coordinate)
-                let firestoreLoc = FirebaseFirestore.GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                ref.setData(["user": self.user!.name, "location": firestoreLoc, "name": self.titleHelp.text!, "time": self.datePicker.date,"category": "심부름을 도와주세요",
-                             "description":self.helpDetail.text!, "uuid": UUID().uuidString])
-                { error in
-                if let e = error
-                    {
-                        print("There was an issue sending data to Firestore: \(e)")
-                    }
-                    else
-                    {
-                        print("Successfully saved data.")
-                    }
-                }
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(action)
-        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
-              print("Alert dismissed")
-        }))
-        present(alert, animated: true, completion: nil)
-    }
-    
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
         animateContainerHeight(maximumContainerHeight)
@@ -470,17 +387,5 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             textView.text = "   요청 세부사항을 입력하세요"
             textView.textColor = UIColor.lightGray
         }
-    }
-}
-extension CALayer
-{
-    func innerBorder(borderOffset: CGFloat = 24.0, borderColor: UIColor = UIColor.blue, borderWidth: CGFloat = 2)
-    {
-        let innerBorder = CALayer()
-        innerBorder.frame = CGRect(x: borderOffset, y: borderOffset, width: frame.size.width - 2 * borderOffset, height: frame.size.height - 2 * borderOffset)
-        innerBorder.borderColor = borderColor.cgColor
-        innerBorder.borderWidth = borderWidth
-        innerBorder.name = "innerBorder"
-        insertSublayer(innerBorder, at: 0)
     }
 }

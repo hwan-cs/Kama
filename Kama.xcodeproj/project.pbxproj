@@ -20,6 +20,9 @@
 		1AF15B9E282D79A700FBB25F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AF15B9D282D79A700FBB25F /* GoogleService-Info.plist */; };
 		1AF15BA028315C2D00FBB25F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF15B9F28315C2D00FBB25F /* Constants.swift */; };
 		1AF15C18283CCEE700FBB25F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF15C17283CCEE700FBB25F /* HelpViewController.swift */; };
+		1AF15C1A2843C95700FBB25F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF15C192843C95600FBB25F /* User.swift */; };
+		1AF15C1D2843CB8200FBB25F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF15C1C2843CB8200FBB25F /* DetailViewController.swift */; };
+		1AF15C1F2843D23000FBB25F /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF15C1E2843D23000FBB25F /* Help.swift */; };
 		700C6C2C150DE26723EFE027 /* Pods_Kama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,9 @@
 		1AF15B9D282D79A700FBB25F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1AF15B9F28315C2D00FBB25F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1AF15C17283CCEE700FBB25F /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		1AF15C192843C95600FBB25F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1AF15C1C2843CB8200FBB25F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1AF15C1E2843D23000FBB25F /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		8749D3CBC89A6B6BFCDDB56F /* Pods_Kama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D56CECC23024385D89BE9D51 /* Pods-Kama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kama.release.xcconfig"; path = "Target Support Files/Pods-Kama/Pods-Kama.release.xcconfig"; sourceTree = "<group>"; };
 		DE1AB6F605B4CCBE28E6FA59 /* Pods-Kama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kama.debug.xcconfig"; path = "Target Support Files/Pods-Kama/Pods-Kama.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 				1AF15B9D282D79A700FBB25F /* GoogleService-Info.plist */,
 				1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */,
 				1A0F3502281ECB37003C4841 /* AppDelegate.swift */,
+				1AF15C1B2843C96100FBB25F /* Model */,
 				1AACD3952828C6A400A278CD /* View */,
 				1AACD3942828C69C00A278CD /* Controller */,
 				1A0F350B281ECB3B003C4841 /* Assets.xcassets */,
@@ -107,6 +114,7 @@
 				1AACD3922828C69300A278CD /* LoginViewController.swift */,
 				1AACD3BE2829595800A278CD /* MainViewController.swift */,
 				1AF15C17283CCEE700FBB25F /* HelpViewController.swift */,
+				1AF15C1C2843CB8200FBB25F /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -117,6 +125,15 @@
 				1A0F3508281ECB37003C4841 /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1AF15C1B2843C96100FBB25F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1AF15C192843C95600FBB25F /* User.swift */,
+				1AF15C1E2843D23000FBB25F /* Help.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6354FDA5768FC1D69DCCA032 /* Pods */ = {
@@ -265,11 +282,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AACD3BF2829595800A278CD /* MainViewController.swift in Sources */,
+				1AF15C1A2843C95700FBB25F /* User.swift in Sources */,
 				1AACD3912828C68700A278CD /* RegisterNonDisabledUserViewController.swift in Sources */,
 				1A0F3507281ECB37003C4841 /* RegisterViewController.swift in Sources */,
 				1AF15C18283CCEE700FBB25F /* HelpViewController.swift in Sources */,
+				1AF15C1F2843D23000FBB25F /* Help.swift in Sources */,
 				1A0F3503281ECB37003C4841 /* AppDelegate.swift in Sources */,
 				1AF15BA028315C2D00FBB25F /* Constants.swift in Sources */,
+				1AF15C1D2843CB8200FBB25F /* DetailViewController.swift in Sources */,
 				1AACD3932828C69300A278CD /* LoginViewController.swift in Sources */,
 				1AACD38F2828C63F00A278CD /* RegisterDisabledUserViewController.swift in Sources */,
 			);
