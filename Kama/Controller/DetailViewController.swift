@@ -13,11 +13,11 @@ import DropDown
 
 class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
-    let defaultHeight: CGFloat = 550
+    let defaultHeight: CGFloat = 500
     let dismissibleHeight: CGFloat = 250
     let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 200
     // keep updated with new height
-    var currentContainerHeight: CGFloat = 300
+    var currentContainerHeight: CGFloat = 500 
     var dropDown = DropDown()
     let scrollView = UIScrollView()
     
@@ -57,7 +57,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var titleHelp: UILabel =
     {
         let titleLabel = UILabel()
-        titleLabel.text = "\t\(help!.name)"
+        titleLabel.text = "\t\(help!.title)"
         titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         titleLabel.layer.cornerRadius = 25
         titleLabel.font = .systemFont(ofSize: 16)
@@ -138,7 +138,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var userName: UILabel =
     {
         let label = UILabel()
-        label.text = "도움 요청인: \(help!.user)"
+        label.text = "도움 요청인: \(help!.userName)"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -146,14 +146,31 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var okButton: UIButton =
     {
         let register = UIButton()
-        register.setTitle(user!.disabled == true ? "확인" : "수락하기", for: .normal)
         register.layer.cornerRadius = 25
         register.setTitleColor(.black, for: .normal)
         register.layer.borderWidth = 1
-        register.layer.borderColor = UIColor.black.cgColor
-        register.backgroundColor = UIColor(red: 0.83, green: 0.89, blue: 0.80, alpha: 1.00)
+        register.layer.borderColor = UIColor.lightGray.cgColor
+        register.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
         register.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        register.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
+        if help!.requestAccepted == true
+        {
+            if help!.requestedBy == user!.id
+            {
+                register.setTitle(user!.disabled == true ? "완료" : "이미 수락한 도움입니다!", for: .normal)
+                register.backgroundColor = user!.disabled == true ? UIColor(red: 1.00, green: 0.94, blue: 0.82, alpha: 1.00) : UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
+            }
+            else
+            {
+                register.setTitle(user!.disabled == true ? "확인" : "이미 수락한 도움입니다!", for: .normal)
+            }
+            register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
+        }
+        else
+        {
+            register.setTitle(user!.disabled == true ? "확인" : "수락하기", for: .normal)
+            register.backgroundColor = UIColor(red: 0.57, green: 0.89, blue: 0.65, alpha: 1.00)
+            register.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
+        }
         return register
     }()
     
@@ -295,6 +312,28 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     
     @objc func okButtonTapped()
     {
+        db.collection("kamaDB").whereField("uuid", isEqualTo: self.help!.uuid).getDocuments
+        { querySnapShot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                for document in querySnapShot!.documents
+                {
+                    document.reference.updateData(["requestAccepted" : true])
+                }
+            }
+        }
+        self.dismiss(animated: true)
+        {
+            self.showAlert("요청 수락 완료!")
+        }
+    }
+    
+    @objc func dismissOnTap()
+    {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -348,6 +387,21 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             break
         }
     }
+    
+    func showAlert(_ message:String)
+    {
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let imageView = UIImageView(frame: CGRect(x: 35, y: 50, width: 50, height: 50))
+        imageView.image = UIImage(systemName: "checkmark.circle.fill")
+        alert.view.addSubview(imageView)
+        let height = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 120)
+        let width = NSLayoutConstraint(item: alert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 120)
+        alert.view.addConstraint(height)
+        alert.view.addConstraint(width)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
         animateContainerHeight(maximumContainerHeight)

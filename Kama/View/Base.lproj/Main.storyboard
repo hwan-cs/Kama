@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="up7-EJ-1jv" customClass="GIFImageView" customModule="Gifu">
-                                <rect key="frame" x="0.0" y="64" width="414" height="543"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="480"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="543" id="4u3-k8-OHI"/>
+                                    <constraint firstAttribute="height" constant="480" id="4u3-k8-OHI"/>
                                     <constraint firstAttribute="width" constant="414" id="SYu-in-HOn"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hza-9D-LgG">
-                                <rect key="frame" x="94" y="646" width="226" height="56"/>
+                                <rect key="frame" x="94" y="583" width="226" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="SDa-tJ-hAY"/>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCf-YW-7b0">
-                                <rect key="frame" x="94" y="733" width="226" height="56"/>
+                                <rect key="frame" x="94" y="670" width="226" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="7x7-Ci-4IT"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-8z-TYb">
-                                <rect key="frame" x="137.5" y="807" width="139.5" height="18"/>
+                                <rect key="frame" x="137.5" y="744" width="139.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="9lE-oO-9dX"/>
                                 </constraints>
@@ -758,16 +758,14 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVa-dO-QSV" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="700" id="P1e-Bo-Psj"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aBX-gM-yD8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="SVa-dO-QSV" firstAttribute="bottom" secondItem="aBX-gM-yD8" secondAttribute="bottom" id="6bQ-oY-uGb"/>
                             <constraint firstItem="qgm-8S-s6Q" firstAttribute="leading" secondItem="aBX-gM-yD8" secondAttribute="leading" id="Avf-Uy-KdM"/>
                             <constraint firstItem="qgm-8S-s6Q" firstAttribute="trailing" secondItem="aBX-gM-yD8" secondAttribute="trailing" id="MLJ-DV-Kfb"/>
                             <constraint firstItem="SVa-dO-QSV" firstAttribute="top" secondItem="qgm-8S-s6Q" secondAttribute="bottom" id="ULm-Lm-1sq"/>
@@ -782,7 +780,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5q-ds-yMn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3078" y="82"/>
+            <point key="canvasLocation" x="3076.811594202899" y="81.696428571428569"/>
         </scene>
     </scenes>
     <resources>

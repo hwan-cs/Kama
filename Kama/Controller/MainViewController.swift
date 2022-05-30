@@ -64,7 +64,7 @@ class MainViewController: UIViewController
         
         if user!.disabled == true
         {
-            let helpButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2-147, y: UIScreen.main.bounds.height-110, width: 294, height: 75))
+            let helpButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2-125, y: UIScreen.main.bounds.height-110, width: 250, height: 75))
             helpButton.setTitle("도와주세요!", for: .normal)
             helpButton.setTitleColor(.black, for: .normal)
             helpButton.backgroundColor = UIColor(red: 0.83, green: 0.89, blue: 0.80, alpha: 1.00)
@@ -79,7 +79,7 @@ class MainViewController: UIViewController
     
     func loadMap(_ uuidToDelete: String = "")
     {
-        db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
+        db.collection("kamaDB").whereField("title", isNotEqualTo: false).getDocuments
         { querySnapShot, error in
             if let e = error
             {
@@ -117,13 +117,14 @@ class MainViewController: UIViewController
                         {
                             let marker = GMSMarker()
                             marker.position = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
-                            marker.title = data["name"] as! String
+                            marker.title = data["title"] as! String
                             marker.userData = data["uuid"] as! String
-                            print(data["name"] as! String)
+                            print(data["title"] as! String)
                             if !self.markers.contains(marker)
                             {
                                 self.markers.append(marker)
                             }
+                            marker.snippet = data["description"] as? String ?? "도와주세요"
                             marker.map = self.mapView
                             self.dateUUID.updateValue(data["uuid"] as! String, forKey: (data["time"] as! Timestamp).dateValue())
                         }
@@ -144,7 +145,6 @@ class MainViewController: UIViewController
         let vc = HelpViewController()
         vc.user = self.user
         vc.onDismissBlock = { result in
-            print("lmao")
             self.loadMap()
         }
         vc.modalPresentationStyle = .overCurrentContext
@@ -154,17 +154,14 @@ class MainViewController: UIViewController
     {
         self.dismiss(animated: true, completion: nil)
     }
-    //아이콘
-    //정보
-    //카테고리
-    //2022-05-30 03:44:00 +0000
+
     func checkDate(completion: (String) -> ()) -> String
     {
         print("checkdate")
         let currentDate = Date()
         for (date, uuid) in dateUUID
         {
-            if (date.compare(toDate: currentDate, granularity: .minute) == .orderedSame)
+            if (date.compare(toDate: currentDate, granularity: .minute) == .orderedAscending)
             {
                 self.dateUUID.removeValue(forKey: date)
                 print("Im going to remove \(uuid) at \(date)")
@@ -188,7 +185,7 @@ extension MainViewController: GMSMapViewDelegate
     {
         if let uuid = marker.userData as? String
         {
-            db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
+            db.collection("kamaDB").whereField("title", isNotEqualTo: false).getDocuments
             { querySnapShot, error in
                 if let e = error
                 {
@@ -201,17 +198,15 @@ extension MainViewController: GMSMapViewDelegate
                         for doc in snapshotDocuments
                         {
                             let data = doc.data()
-                            if let fsuuid = data["uuid"] as? String
+                            let fsuuid = data["uuid"] as! String
+                            if fsuuid == uuid
                             {
-                                if fsuuid == uuid
-                                {
-                                    let help = KamaHelp(category: data["category"] as? String ?? "요청 세부사항이 없습니다", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, name: data["name"] as! String, time: data["time"] as! Timestamp, user: data["user"] as! String, uuid: data["uuid"] as! String)
-                                    let vc = DetailViewController()
-                                    vc.help = help
-                                    vc.user = self.user
-                                    vc.modalPresentationStyle = .overCurrentContext
-                                    self.present(vc, animated: true)
-                                }
+                                let help = KamaHelp(category: data["category"] as? String ?? "요청 세부사항이 없습니다", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, title: data["title"] as! String, time: data["time"] as! Timestamp, userName: data["userName"] as! String, uuid: data["uuid"] as! String, requestedBy: data["requestedBy"] as! String, requestAccepted: data["requestAccepted"] as! Bool)
+                                let vc = DetailViewController()
+                                vc.help = help
+                                vc.user = self.user
+                                vc.modalPresentationStyle = .overCurrentContext
+                                self.present(vc, animated: true)
                             }
                         }
                     }

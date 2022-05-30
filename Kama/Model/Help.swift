@@ -13,28 +13,23 @@ struct KamaHelp
     var category: String
     var description: String?
     var location: GeoPoint
-    var name: String
+    var title: String
     var time: Timestamp
-    var user: String
+    var userName: String
     var uuid: String
-    init(category: String, description: String, location: GeoPoint, name: String, time: Timestamp, user:String, uuid: String)
+    var requestedBy: String
+    var requestAccepted: Bool
+    
+    init(category: String, description: String, location: GeoPoint, title: String, time: Timestamp, userName:String, uuid: String, requestedBy: String, requestAccepted: Bool)
     {
         self.category = category
         self.description = description
         self.location = location
-        self.name = name
+        self.title = title
         self.time = time
-        self.user = user
+        self.userName = userName
         self.uuid = uuid
-    }
-    
-    init(category: String, location: GeoPoint, name: String, time: Timestamp, user:String, uuid: String)
-    {
-        self.category = category
-        self.location = location
-        self.name = name
-        self.time = time
-        self.user = user
-        self.uuid = uuid
+        self.requestAccepted = requestAccepted
+        self.requestedBy = requestedBy
     }
 }
