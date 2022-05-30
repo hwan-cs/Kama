@@ -11,6 +11,7 @@ import GooglePlaces
 import CoreLocation
 import Firebase
 import FirebaseFirestore
+import SwiftDate
 
 class MainViewController: UIViewController
 {
@@ -22,6 +23,12 @@ class MainViewController: UIViewController
     var locationManager: CLLocationManager?
     
     var user: KamaUser?
+    
+    var dateUUID = [Date: String]()
+    
+    var markers = [GMSMarker]()
+    
+    var timer = Timer()
     
     override func viewDidLoad()
     {
@@ -41,32 +48,19 @@ class MainViewController: UIViewController
             mapView.camera = camera
         }
 
-        db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
-        { querySnapShot, error in
-            if let e = error
-            {
-                print("There was an issue retrieving data from Firestore \(e)")
-            }
-            else
-            {
-                if let snapshotDocuments = querySnapShot?.documents
+        loadMap()
+        
+
+        self.timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { _ in
+            self.checkDate
+            { result in
+                if (result != "")
                 {
-                    for doc in snapshotDocuments
-                    {
-                        let data = doc.data()
-                        if let geopoint = data["location"] as? GeoPoint
-                        {
-                            let marker = GMSMarker()
-                            marker.position = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
-                            marker.title = data["name"] as! String
-                            marker.userData = data["uuid"] as! String
-                            print(data["name"] as! String)
-                            marker.map = self.mapView
-                        }
-                    }
+                    self.loadMap(result)
                 }
             }
-        }
+        })
+        
         
         if user!.disabled == true
         {
@@ -83,6 +77,62 @@ class MainViewController: UIViewController
         }
     }
     
+    func loadMap(_ uuidToDelete: String = "")
+    {
+        db.collection("kamaDB").whereField("name", isNotEqualTo: false).getDocuments
+        { querySnapShot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let snapshotDocuments = querySnapShot?.documents
+                {
+                    for doc in snapshotDocuments
+                    {
+                        let data = doc.data()
+                        if uuidToDelete == data["uuid"] as! String
+                        {
+                            doc.reference.delete()
+                            {   err in
+                                if let err = err
+                                {
+                                    print("Error removing document as owner: \(err)")
+                                }
+                                else
+                                {
+                                    for m in self.markers
+                                    {
+                                        if m.userData as! String == uuidToDelete
+                                        {
+                                            m.map = nil
+                                        }
+                                    }
+                                    print("Document successfully removed!")
+                                }
+                            }
+                        }
+                        if let geopoint = data["location"] as? GeoPoint
+                        {
+                            let marker = GMSMarker()
+                            marker.position = CLLocationCoordinate2D(latitude: geopoint.latitude, longitude: geopoint.longitude)
+                            marker.title = data["name"] as! String
+                            marker.userData = data["uuid"] as! String
+                            print(data["name"] as! String)
+                            if !self.markers.contains(marker)
+                            {
+                                self.markers.append(marker)
+                            }
+                            marker.map = self.mapView
+                            self.dateUUID.updateValue(data["uuid"] as! String, forKey: (data["time"] as! Timestamp).dateValue())
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool)
     {
         locationManager?.stopUpdatingLocation()
@@ -93,6 +143,10 @@ class MainViewController: UIViewController
         print("help button tapped")
         let vc = HelpViewController()
         vc.user = self.user
+        vc.onDismissBlock = { result in
+            print("lmao")
+            self.loadMap()
+        }
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
     }
@@ -100,8 +154,29 @@ class MainViewController: UIViewController
     {
         self.dismiss(animated: true, completion: nil)
     }
+    //아이콘
+    //정보
+    //카테고리
+    //2022-05-30 03:44:00 +0000
+    func checkDate(completion: (String) -> ()) -> String
+    {
+        print("checkdate")
+        let currentDate = Date()
+        for (date, uuid) in dateUUID
+        {
+            if (date.compare(toDate: currentDate, granularity: .minute) == .orderedSame)
+            {
+                self.dateUUID.removeValue(forKey: date)
+                print("Im going to remove \(uuid) at \(date)")
+                completion(uuid)
+                return uuid
+            }
+        }
+        completion("")
+        return ""
+    }
 }
-
+//
 extension MainViewController: GMSMapViewDelegate
 {
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
@@ -130,9 +205,10 @@ extension MainViewController: GMSMapViewDelegate
                             {
                                 if fsuuid == uuid
                                 {
-                                    let help = KamaHelp(category: data["category"] as! String, description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, name: data["name"] as! String, time: data["time"] as! Timestamp, user: data["user"] as! String, uuid: data["uuid"] as! String)
+                                    let help = KamaHelp(category: data["category"] as? String ?? "요청 세부사항이 없습니다", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, name: data["name"] as! String, time: data["time"] as! Timestamp, user: data["user"] as! String, uuid: data["uuid"] as! String)
                                     let vc = DetailViewController()
                                     vc.help = help
+                                    vc.user = self.user
                                     vc.modalPresentationStyle = .overCurrentContext
                                     self.present(vc, animated: true)
                                 }

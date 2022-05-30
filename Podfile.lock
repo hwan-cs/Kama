@@ -356,6 +356,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - SwiftDate (5.1.0)
   - TweeTextField (1.6.3)
 
 DEPENDENCIES:
@@ -366,6 +367,7 @@ DEPENDENCIES:
   - Gifu
   - GoogleMaps
   - GooglePlaces
+  - SwiftDate (~> 5.0)
   - TweeTextField
 
 SPEC REPOS:
@@ -392,6 +394,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SwiftDate
     - TweeTextField
 
 SPEC CHECKSUMS:
@@ -417,8 +420,9 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
   TweeTextField: 47bf8e7f0433364a7f7e119c45e7f278ea50eb62
 
-PODFILE CHECKSUM: d1f2e265f0e7ec769762ed1f2b05925df570ded5
+PODFILE CHECKSUM: c6790166e61d79d868d988fd540dfd3b4f57ef73
 
 COCOAPODS: 1.10.1

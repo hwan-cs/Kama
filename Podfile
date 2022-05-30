@@ -14,4 +14,5 @@ target 'Kama' do
   pod 'Gifu'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'SwiftDate', '~> 5.0'
 end

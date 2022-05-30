@@ -27,6 +27,8 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     var locationManager: CLLocationManager?
     
+    var onDismissBlock : ((Bool) -> Void)?
+    
     // 1
     lazy var containerView: UIView =
     {
@@ -393,6 +395,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         }
     }
     
+    //언제 reload??
     @objc func categoryButtonTapped()
     {
         dropDown.show()
@@ -400,7 +403,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @objc func registerHelpTapped()
     {
-        let alert = UIAlertController(title: "저장하시겠습니까?", message: "한번 저장하면 다시 날짜를 바꿀 수 없습니다.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "저장하시겠습니까?", message: "한번 저장하면 다시 바꿀 수 없습니다.", preferredStyle: .alert)
         let action = UIAlertAction(title: "예", style: .default)
         { (action) in
             let ref = self.db.collection("kamaDB").document()
@@ -408,7 +411,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             {
                 print(location.coordinate)
                 let firestoreLoc = FirebaseFirestore.GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                ref.setData(["user": self.user!.name, "location": firestoreLoc, "name": self.titleHelp.text!, "time": self.datePicker.date,"category": "심부름을 도와주세요",
+                ref.setData(["user": self.user!.name, "location": firestoreLoc, "name": self.titleHelp.text!, "time": self.datePicker.date,"category": self.dropDown.selectedItem,
                              "description":self.helpDetail.text!, "uuid": UUID().uuidString])
                 { error in
                 if let e = error
@@ -417,6 +420,8 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                     }
                     else
                     {
+                        print(self.datePicker.date)
+                        self.onDismissBlock!(true)
                         print("Successfully saved data.")
                     }
                 }

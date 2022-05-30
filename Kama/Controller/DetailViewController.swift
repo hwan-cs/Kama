@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     let db = Firestore.firestore()
     
     var help: KamaHelp?
+    var user: KamaUser?
     
     // 1
     lazy var containerView: UIView =
@@ -145,7 +146,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var okButton: UIButton =
     {
         let register = UIButton()
-        register.setTitle("확인", for: .normal)
+        register.setTitle(user!.disabled == true ? "확인" : "수락하기", for: .normal)
         register.layer.cornerRadius = 25
         register.setTitleColor(.black, for: .normal)
         register.layer.borderWidth = 1
