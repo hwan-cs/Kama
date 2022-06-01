@@ -17,11 +17,13 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     let dismissibleHeight: CGFloat = 250
     let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 200
     // keep updated with new height
-    var currentContainerHeight: CGFloat = 500 
+    var currentContainerHeight: CGFloat = 500
     var dropDown = DropDown()
     let scrollView = UIScrollView()
     
     let db = Firestore.firestore()
+    
+    var onDismissBlock : ((Bool) -> Void)?
     
     var help: KamaHelp?
     var user: KamaUser?
@@ -130,7 +132,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var pointLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "포인트: "
+        label.text = "포인트: \(help!.point)pt"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
@@ -158,18 +160,26 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
             {
                 register.setTitle(user!.disabled == true ? "완료" : "이미 수락한 도움입니다!", for: .normal)
                 register.backgroundColor = user!.disabled == true ? UIColor(red: 1.00, green: 0.94, blue: 0.82, alpha: 1.00) : UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
+                register.addTarget(self, action: #selector(completedButtonTapped), for: .touchUpInside)
             }
             else
             {
                 register.setTitle(user!.disabled == true ? "확인" : "이미 수락한 도움입니다!", for: .normal)
+                register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
             }
-            register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
         }
         else
         {
             register.setTitle(user!.disabled == true ? "확인" : "수락하기", for: .normal)
             register.backgroundColor = UIColor(red: 0.57, green: 0.89, blue: 0.65, alpha: 1.00)
-            register.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
+            if user!.disabled
+            {
+                register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
+            }
+            else
+            {
+                register.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
+            }
         }
         return register
     }()
@@ -323,12 +333,61 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
                 for document in querySnapShot!.documents
                 {
                     document.reference.updateData(["requestAccepted" : true])
+                    document.reference.updateData(["acceptedBy" : self.user!.id])
                 }
             }
         }
-        self.dismiss(animated: true)
-        {
-            self.showAlert("요청 수락 완료!")
+        self.showAlert("요청 수락 완료!", 50, 50, completionHandler: {
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+    
+    @objc func completedButtonTapped()
+    {
+//        db.collection("kamaDB").whereField("uuid", isEqualTo: self.help!.uuid).getDocuments
+//        { querySnapShot, error in
+//            if let e = error
+//            {
+//                print("There was an issue retrieving data from Firestore \(e)")
+//            }
+//            else
+//            {
+//                for document in querySnapShot!.documents
+//                {
+//                    document.reference.delete()
+//                    {   err in
+//                        if let err = err
+//                        {
+//                            print("Error removing document as owner: \(err)")
+//                        }
+//                        else
+//                        {
+//                            print("Document successfully removed!")
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        db.collection("userDB").whereField("id", isEqualTo: self.help!.acceptedBy!).getDocuments
+        { querySnapShot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                for document in querySnapShot!.documents
+                {
+                    let data = document.data()
+                    document.reference.updateData(["point": (data["point"] as! Int) + self.help!.point])
+                    print("give \((data["point"] as! Int) + self.help!.point)points")
+                }
+            }
+        }
+        self.showAlert("도움 완료! \(self.help!.point)pt 지급!", 100, 100) {
+            self.dismiss(animated: true) {
+                self.onDismissBlock!(true)
+            }
         }
     }
     
@@ -388,18 +447,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         }
     }
     
-    func showAlert(_ message:String)
+    func showAlert(_ message:String, _ width: Int, _ height: Int, completionHandler: @escaping () -> Void)
     {
         let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-        let imageView = UIImageView(frame: CGRect(x: 35, y: 50, width: 50, height: 50))
-        imageView.image = UIImage(systemName: "checkmark.circle.fill")
+        let imageView = UIImageView(frame: CGRect(x: 35, y: 50, width: width, height: height))
         alert.view.addSubview(imageView)
         let height = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 120)
         let width = NSLayoutConstraint(item: alert.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 120)
         alert.view.addConstraint(height)
         alert.view.addConstraint(width)
         self.present(alert, animated: true, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in alert.dismiss(animated: true) {
+            completionHandler()
+        }} )
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField)

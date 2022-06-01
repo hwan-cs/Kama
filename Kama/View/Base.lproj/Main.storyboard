@@ -207,10 +207,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-dP-iYn">
-                                                <rect key="frame" x="42.5" y="305" width="329" height="450"/>
+                                                <rect key="frame" x="42.5" y="305" width="329" height="451"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="450" id="C6i-E1-wHJ"/>
                                                     <constraint firstAttribute="width" constant="329" id="QQZ-S8-e8y"/>
                                                 </constraints>
                                                 <string key="text">Terms &amp; Conditions
@@ -278,6 +277,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                             <constraint firstAttribute="bottom" secondItem="wk3-Uh-ARn" secondAttribute="bottom" id="9TN-SC-Bq8"/>
                                             <constraint firstItem="dNI-dP-iYn" firstAttribute="top" secondItem="n2Q-C4-Clp" secondAttribute="bottom" constant="18" id="JrR-KF-nyx"/>
                                             <constraint firstItem="n2Q-C4-Clp" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" constant="52" id="McV-mo-arV"/>
+                                            <constraint firstItem="wk3-Uh-ARn" firstAttribute="top" secondItem="dNI-dP-iYn" secondAttribute="bottom" constant="60" id="OSq-eQ-NS5"/>
                                             <constraint firstItem="n2Q-C4-Clp" firstAttribute="top" secondItem="tSa-HA-X3g" secondAttribute="bottom" constant="52" id="YYV-ja-mv6"/>
                                             <constraint firstAttribute="trailing" secondItem="wk3-Uh-ARn" secondAttribute="trailing" id="Yxf-qh-yjd"/>
                                             <constraint firstItem="wk3-Uh-ARn" firstAttribute="leading" secondItem="lWs-aY-9Na" secondAttribute="leading" id="em7-zd-ea4"/>
@@ -615,10 +615,9 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="I1c-uU-IrL">
-                                                <rect key="frame" x="42.5" y="305" width="329" height="450"/>
+                                                <rect key="frame" x="42.5" y="305" width="329" height="451"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="450" id="F7d-tk-BUO"/>
                                                     <constraint firstAttribute="width" constant="329" id="oAp-BV-O8W"/>
                                                 </constraints>
                                                 <string key="text">Terms &amp; Conditions
@@ -684,6 +683,7 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Kjk-hS-JOr" firstAttribute="top" secondItem="iOk-y3-ONf" secondAttribute="bottom" constant="52" id="0ra-Nk-8m5"/>
+                                            <constraint firstItem="zgb-jN-GKC" firstAttribute="top" secondItem="I1c-uU-IrL" secondAttribute="bottom" constant="60" id="3SN-7Z-OJc"/>
                                             <constraint firstItem="I1c-uU-IrL" firstAttribute="top" secondItem="Kjk-hS-JOr" secondAttribute="bottom" constant="18" id="6se-X8-7u3"/>
                                             <constraint firstItem="Kjk-hS-JOr" firstAttribute="leading" secondItem="siv-gX-7XH" secondAttribute="leading" constant="52" id="AAz-g2-Uwl"/>
                                             <constraint firstItem="zgb-jN-GKC" firstAttribute="leading" secondItem="siv-gX-7XH" secondAttribute="leading" id="C0d-1t-mGw"/>

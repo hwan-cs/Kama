@@ -68,7 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                                         {
                                             if let id = data["id"] as? String
                                             {
-                                                vc.user = KamaUser(name: userName, disabled: disabled, id: id)
+                                                vc.user = KamaUser(name: userName, disabled: disabled, id: id, point: data["point"] as? Int ?? 0)
                                                 self.present(vc, animated: true)
                                             }
                                         }

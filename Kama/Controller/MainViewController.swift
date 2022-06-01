@@ -79,6 +79,7 @@ class MainViewController: UIViewController
     
     func loadMap(_ uuidToDelete: String = "")
     {
+        print("loadMap")
         db.collection("kamaDB").whereField("title", isNotEqualTo: false).getDocuments
         { querySnapShot, error in
             if let e = error
@@ -201,10 +202,13 @@ extension MainViewController: GMSMapViewDelegate
                             let fsuuid = data["uuid"] as! String
                             if fsuuid == uuid
                             {
-                                let help = KamaHelp(category: data["category"] as? String ?? "요청 세부사항이 없습니다", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, title: data["title"] as! String, time: data["time"] as! Timestamp, userName: data["userName"] as! String, uuid: data["uuid"] as! String, requestedBy: data["requestedBy"] as! String, requestAccepted: data["requestAccepted"] as! Bool)
+                                let help = KamaHelp(category: data["category"] as? String ?? "요청 세부사항이 없습니다", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, title: data["title"] as! String, time: data["time"] as! Timestamp, userName: data["userName"] as! String, uuid: data["uuid"] as! String, requestedBy: data["requestedBy"] as! String, requestAccepted: data["requestAccepted"] as! Bool, acceptedBy: data["acceptedBy"] as? String ?? "", point: data["point"] as! Int)
                                 let vc = DetailViewController()
                                 vc.help = help
                                 vc.user = self.user
+                                vc.onDismissBlock = { result in
+                                    self.loadMap(uuid)
+                                }
                                 vc.modalPresentationStyle = .overCurrentContext
                                 self.present(vc, animated: true)
                             }

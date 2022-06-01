@@ -13,10 +13,11 @@ struct KamaUser
     var disabled: Bool
     var id: String
     var points: Int?
-    init(name: String, disabled: Bool, id: String)
+    init(name: String, disabled: Bool, id: String, point: Int)
     {
         self.name = name
         self.disabled = disabled
         self.id = id
+        self.points = point
     }
 }

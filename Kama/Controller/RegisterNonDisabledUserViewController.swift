@@ -46,7 +46,7 @@ class RegisterNonDisabledUserViewController: UIViewController, UITextFieldDelega
         let action = UIAlertAction(title: "예", style: .default)
         { [self] (action) in
             let ref = self.db.collection("userDB").document()
-            ref.setData(["userName":self.userNameTextField.text!, "password": self.passwordTextField.text!, "disabled": false, "id": UUID().uuidString])
+            ref.setData(["userName":self.userNameTextField.text!, "password": self.passwordTextField.text!, "disabled": false, "id": UUID().uuidString, "point":0])
             { error in
             if let e = error
                 {

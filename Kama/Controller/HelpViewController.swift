@@ -13,11 +13,11 @@ import DropDown
 
 class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
-    let defaultHeight: CGFloat = 550
+    let defaultHeight: CGFloat = 500
     let dismissibleHeight: CGFloat = 250
-    let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 150
+    let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 200
     // keep updated with new height
-    var currentContainerHeight: CGFloat = 300
+    var currentContainerHeight: CGFloat = 500
     var dropDown = DropDown()
     let scrollView = UIScrollView()
     
@@ -404,6 +404,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     @objc func registerHelpTapped()
     {
         let alert = UIAlertController(title: "저장하시겠습니까?", message: "한번 저장하면 다시 바꿀 수 없습니다.", preferredStyle: .alert)
+        //예외처리 해야됨
         let action = UIAlertAction(title: "예", style: .default)
         { (action) in
             let ref = self.db.collection("kamaDB").document()
@@ -412,7 +413,8 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                 print(location.coordinate)
                 let firestoreLoc = FirebaseFirestore.GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
                 ref.setData(["userName": self.user!.name, "location": firestoreLoc, "title": self.titleHelp.text!, "time": self.datePicker.date,"category": self.dropDown.selectedItem,
-                             "description":self.helpDetail.text!, "uuid": UUID().uuidString, "requestedBy": self.user!.id, "requestAccepted": false])
+                             "description":self.helpDetail.text!, "uuid": UUID().uuidString, "requestedBy": self.user!.id, "requestAccepted": false, "acceptedBy": "",
+                             "point": Int(self.pointTextField.text!)!])
                 { error in
                 if let e = error
                     {

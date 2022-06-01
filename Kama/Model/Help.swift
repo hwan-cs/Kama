@@ -19,8 +19,10 @@ struct KamaHelp
     var uuid: String
     var requestedBy: String
     var requestAccepted: Bool
+    var acceptedBy: String?
+    var point: Int
     
-    init(category: String, description: String, location: GeoPoint, title: String, time: Timestamp, userName:String, uuid: String, requestedBy: String, requestAccepted: Bool)
+    init(category: String, description: String, location: GeoPoint, title: String, time: Timestamp, userName:String, uuid: String, requestedBy: String, requestAccepted: Bool, acceptedBy: String, point: Int)
     {
         self.category = category
         self.description = description
@@ -31,5 +33,7 @@ struct KamaHelp
         self.uuid = uuid
         self.requestAccepted = requestAccepted
         self.requestedBy = requestedBy
+        self.acceptedBy = acceptedBy
+        self.point = point
     }
 }
