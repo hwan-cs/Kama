@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eVW-P1-B7O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eVW-P1-B7O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -752,7 +752,11 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                         </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem image="bell.fill" catalog="system" id="tsx-r6-4Nv"/>
-                                            <barButtonItem image="person.fill" catalog="system" id="gM1-TP-yLB"/>
+                                            <barButtonItem image="person.fill" catalog="system" id="gM1-TP-yLB">
+                                                <connections>
+                                                    <action selector="userInfoButtonTapped:" destination="scA-3n-4VG" id="6LZ-WK-TsM"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
@@ -774,17 +778,63 @@ Via Email: hwan333@konkuk.ac.kr</string>
                             <constraint firstItem="SVa-dO-QSV" firstAttribute="trailing" secondItem="aBX-gM-yD8" secondAttribute="trailing" id="stb-kS-xrW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8GH-pC-HdG"/>
                     <connections>
                         <outlet property="mapView" destination="SVa-dO-QSV" id="G5P-ox-0eL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5q-ds-yMn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3076.811594202899" y="81.696428571428569"/>
+            <point key="canvasLocation" x="3077" y="82"/>
+        </scene>
+        <!--User Info View Controller-->
+        <scene sceneID="kBh-qP-hn7">
+            <objects>
+                <viewController storyboardIdentifier="UserInfoViewController" id="rSt-zd-q1s" customClass="UserInfoViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tMC-Uo-sf9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4E-4c-8Fh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="마이 페이지" id="Wzn-Ew-BII">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="f82-VM-oUh">
+                                            <connections>
+                                                <action selector="dismissView:" destination="rSt-zd-q1s" id="HAJ-DC-QyC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNf-Ko-Trj">
+                                <rect key="frame" x="173.5" y="432.5" width="67" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EIf-G4-sR4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uNf-Ko-Trj" firstAttribute="centerY" secondItem="tMC-Uo-sf9" secondAttribute="centerY" id="U9e-76-MgI"/>
+                            <constraint firstItem="I4E-4c-8Fh" firstAttribute="leading" secondItem="EIf-G4-sR4" secondAttribute="leading" id="a0i-Tt-jyi"/>
+                            <constraint firstItem="I4E-4c-8Fh" firstAttribute="top" secondItem="EIf-G4-sR4" secondAttribute="top" id="gcP-cI-K6d"/>
+                            <constraint firstItem="I4E-4c-8Fh" firstAttribute="trailing" secondItem="EIf-G4-sR4" secondAttribute="trailing" id="hio-Ya-Mwd"/>
+                            <constraint firstItem="uNf-Ko-Trj" firstAttribute="centerX" secondItem="tMC-Uo-sf9" secondAttribute="centerX" id="rVG-U6-cae"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Y5f-Uw-ZSk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2IE-aT-9mQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3972" y="82"/>
         </scene>
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

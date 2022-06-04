@@ -140,6 +140,19 @@ class MainViewController: UIViewController
         locationManager?.stopUpdatingLocation()
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        mapView.settings.compassButton = true
+
+        if let location = locationManager?.location
+        {
+            let camera = GMSCameraPosition.camera(withLatitude: (location.coordinate.latitude), longitude: (location.coordinate.longitude), zoom: 17.0)
+            mapView.camera = camera
+        }
+    }
+    
     @objc func helpButtonTapped()
     {
         print("help button tapped")
@@ -151,11 +164,19 @@ class MainViewController: UIViewController
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
     }
+    
     @IBAction func logOutButtonTapped(_ sender: UIBarButtonItem)
     {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func userInfoButtonTapped(_ sender: UIBarButtonItem)
+    {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "UserInfoViewController") as! UserInfoViewController
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     func checkDate(completion: (String) -> ()) -> String
     {
         print("checkdate")
