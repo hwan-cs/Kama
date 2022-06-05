@@ -112,7 +112,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         dropDownButton.setTitleColor(.black, for: .normal)
         DropDown.appearance().textFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
         dropDown.anchorView = dropDownButton
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!-12)
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!-50)
         dropDown.backgroundColor = .white
         dropDown.selectedTextColor = .white
         dropDown.selectionBackgroundColor = UIColor.lightGray
@@ -122,7 +122,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         { [unowned self] (index: Int, item: String) in
             dropDownButton.setTitle(item, for: .normal)
         }
-        let data = ["카테고리 1", "카테고리 2","카테고리 3","카테고리 4","카테고리 5","카테고리 6","카테고리 7","카테고리 8","카테고리 9","카테고리 10"]
+        let data = ["청소, 집안일", "말동무","동행, 돌봄","반려동물","배달","운반, 수리","기타"]
         dropDown.dataSource = data
         dropDownButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
         return dropDownButton

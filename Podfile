@@ -15,4 +15,5 @@ target 'Kama' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'SwiftDate', '~> 5.0'
+  pod 'Firebase/Messaging'
 end

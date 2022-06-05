@@ -98,6 +98,7 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
             contentStackView.addArrangedSubview(helpLabel)
         }
         contentStackView.addArrangedSubview(spacer)
+        contentStackView.setCustomSpacing(10, after: numLabel)
        // contentStackView.alignment = .center
         contentStackView.axis = .vertical
         contentStackView.distribution = .equalCentering

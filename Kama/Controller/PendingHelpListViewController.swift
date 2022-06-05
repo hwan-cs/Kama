@@ -32,7 +32,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
     lazy var containerView: UIView =
     {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.98, green: 0.97, blue: 0.92, alpha: 1.00)
+        view.backgroundColor = .white
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
         return view
@@ -51,7 +51,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "완룓되지 않은 도움 목록"
+        label.text = "완료되지 않은 도움 목록"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -101,7 +101,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
             }
         }
         contentStackView.addArrangedSubview(spacer)
-       // contentStackView.alignment = .center
+        contentStackView.setCustomSpacing(10, after: numLabel)
         contentStackView.axis = .vertical
         contentStackView.distribution = .equalCentering
         contentStackView.spacing = 30
@@ -124,7 +124,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
                     {
                         let data = doc.data()
                         print(self.user!.id)
-                        if data["requestedBy"] as! String == self.user!.id
+                        if data["requestedBy"] as! String == self.user!.id && data["requestAccepted"] as! Bool == true
                         {
                             let kama = KamaHelp(category: data["category"] as! String, point: data["point"] as! Int, userName: data["userName"] as! String, requestAccepted: data["requestAccepted"] as! Bool, title: data["title"] as! String)
                             self.count += 1

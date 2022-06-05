@@ -39,6 +39,7 @@
 		1A0F3510281ECB3B003C4841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A56A739284CA8C900101F35 /* RequestedHelpListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedHelpListViewController.swift; sourceTree = "<group>"; };
 		1A56A73B284CB60300101F35 /* PendingHelpListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingHelpListViewController.swift; sourceTree = "<group>"; };
+		1A56A73D284CF7CC00101F35 /* Kama.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kama.entitlements; sourceTree = "<group>"; };
 		1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = registerScreen_gif.gif; sourceTree = "<group>"; };
 		1AACD38E2828C63F00A278CD /* RegisterDisabledUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisabledUserViewController.swift; sourceTree = "<group>"; };
 		1AACD3902828C68700A278CD /* RegisterNonDisabledUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNonDisabledUserViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		1A0F3501281ECB37003C4841 /* Kama */ = {
 			isa = PBXGroup;
 			children = (
+				1A56A73D284CF7CC00101F35 /* Kama.entitlements */,
 				1AF15B9D282D79A700FBB25F /* GoogleService-Info.plist */,
 				1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */,
 				1A0F3502281ECB37003C4841 /* AppDelegate.swift */,
@@ -452,12 +454,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Kama/Kama.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6DXT245L5T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kama/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "수락해주세요!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to choose profile picture from photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -487,12 +493,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Kama/Kama.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6DXT245L5T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kama/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "수락해주세요!";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to choose profile picture from photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

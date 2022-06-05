@@ -212,46 +212,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="329" id="QQZ-S8-e8y"/>
                                                 </constraints>
-                                                <string key="text">Terms &amp; Conditions
-Updated at 2023-05-09
-General Terms
-By accessing and placing an order with, you confirm that you are in agreement with and bound by the terms of service contained in
-the Terms &amp; Conditions outlined below. These terms apply to the entire website and any email or other type of communication
-between you and
-Under no circumstances shall team be liable for any direct, indirect, special, incidental or consequential damages, including, but not
-limited to, loss of data or profit, arising out of the use, or the inability to use, the materials on this site, even if team or an authorized
-representative has been advised of the possibility of such damages. If your use of materials from this site results in the need for
-servicing, repair or correction of equipment or data, you assume any costs thereof.
-will not be responsible for any outcome that may occur during the course of usage of our resources. We reserve the rights to change
-prices and revise the resources usage policy in any moment.
-License
-Kama grants vou a revocable. non-exclusive. non- transferable. limited license to download, install and use our service strictlv in
-accordance with the terms of this Agreement.
-These Terms &amp; Conditions are a contract between vou and Kama (referred to in these Terms &amp; Conditions as "Kama". "us", "we" or
-"our"'), the provider of the Kama website and the services accessible from the Kama website (which are collectively referred to in
-these Terms &amp; Conditions as the "Kama Service").
-You are agreeing to be bound by these Terms &amp; Conditions. If vou do not aaree to these Terms &amp; Conditions, please do not use the
-Service. In these Terms &amp; Conditions. "vou" refers both to vou as an individual and to the entity vou represent. If vou violate anv of
-these Terms &amp; Conditions, we reserve the right to cancel your account or block access to your account without notice.
-
-Disclaimer
-We are not responsible for any content, code or any other imprecision. We do not provide warranties or guarantees. In no event shall
-we be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action
-of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service. We
-reserve the right to make additions, deletions, or modifications to the contents on the Service at any time without prior notice.
-Our Service and its contents are provided "as is" and "as available" without any warranty or representations of any kind, whether
-express or implied. We are a distributor and not a publisher of the content supplied by third parties; as such, our exercises no
-editorial control over such content and makes no warranty or representation as to the accuracy, reliability or currency of any
-information, content, service or merchandise provided through or accessible via our Service. Without limiting the foregoina, We
-specifically disclaim all warranties and representations in any content transmitted on or in connection with our Service or on sites that
-may appear as links on our Service, or in the products provided as a part of, or otherwise in connection with, our Service, including
-without limitation any warranties of merchantability, fitness for a particular purpose or non-infringement of third party rights. No oral
-advice or written information given by us or any of its affiliates, emplovees, officers, directors, agents, or the like will create a
-warranty. Price and availability information is subject to change without notice. Without limiting the foregoing, we do not warrant that
-our Service will be uninterrupted. uncorrupted. timelv, or error-free.
-Contact Us
-Don't hesitate to contact us if you have any questions.
-Via Email: hwan333@konkuk.ac.kr</string>
+                                                <mutableString key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
+카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.
+본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.
+불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.
+투명하고 목적에 맞게 사용해주시길 바랍니다.</mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -620,46 +585,11 @@ Via Email: hwan333@konkuk.ac.kr</string>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="329" id="oAp-BV-O8W"/>
                                                 </constraints>
-                                                <string key="text">Terms &amp; Conditions
-Updated at 2023-05-09
-General Terms
-By accessing and placing an order with, you confirm that you are in agreement with and bound by the terms of service contained in
-the Terms &amp; Conditions outlined below. These terms apply to the entire website and any email or other type of communication
-between you and
-Under no circumstances shall team be liable for any direct, indirect, special, incidental or consequential damages, including, but not
-limited to, loss of data or profit, arising out of the use, or the inability to use, the materials on this site, even if team or an authorized
-representative has been advised of the possibility of such damages. If your use of materials from this site results in the need for
-servicing, repair or correction of equipment or data, you assume any costs thereof.
-will not be responsible for any outcome that may occur during the course of usage of our resources. We reserve the rights to change
-prices and revise the resources usage policy in any moment.
-License
-Kama grants vou a revocable. non-exclusive. non- transferable. limited license to download, install and use our service strictlv in
-accordance with the terms of this Agreement.
-These Terms &amp; Conditions are a contract between vou and Kama (referred to in these Terms &amp; Conditions as "Kama". "us", "we" or
-"our"'), the provider of the Kama website and the services accessible from the Kama website (which are collectively referred to in
-these Terms &amp; Conditions as the "Kama Service").
-You are agreeing to be bound by these Terms &amp; Conditions. If vou do not aaree to these Terms &amp; Conditions, please do not use the
-Service. In these Terms &amp; Conditions. "vou" refers both to vou as an individual and to the entity vou represent. If vou violate anv of
-these Terms &amp; Conditions, we reserve the right to cancel your account or block access to your account without notice.
-
-Disclaimer
-We are not responsible for any content, code or any other imprecision. We do not provide warranties or guarantees. In no event shall
-we be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action
-of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service. We
-reserve the right to make additions, deletions, or modifications to the contents on the Service at any time without prior notice.
-Our Service and its contents are provided "as is" and "as available" without any warranty or representations of any kind, whether
-express or implied. We are a distributor and not a publisher of the content supplied by third parties; as such, our exercises no
-editorial control over such content and makes no warranty or representation as to the accuracy, reliability or currency of any
-information, content, service or merchandise provided through or accessible via our Service. Without limiting the foregoina, We
-specifically disclaim all warranties and representations in any content transmitted on or in connection with our Service or on sites that
-may appear as links on our Service, or in the products provided as a part of, or otherwise in connection with, our Service, including
-without limitation any warranties of merchantability, fitness for a particular purpose or non-infringement of third party rights. No oral
-advice or written information given by us or any of its affiliates, emplovees, officers, directors, agents, or the like will create a
-warranty. Price and availability information is subject to change without notice. Without limiting the foregoing, we do not warrant that
-our Service will be uninterrupted. uncorrupted. timelv, or error-free.
-Contact Us
-Don't hesitate to contact us if you have any questions.
-Via Email: hwan333@konkuk.ac.kr</string>
+                                                <mutableString key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
+카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.
+본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.
+불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.
+투명하고 목적에 맞게 사용해주시길 바랍니다.</mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -950,7 +880,9 @@ Via Email: hwan333@konkuk.ac.kr</string>
                     <connections>
                         <outlet property="dUserInfoLbl" destination="ioZ-Dx-64P" id="AfR-Ag-xmS"/>
                         <outlet property="imageView" destination="6bK-dS-wJa" id="aQx-5i-Eu9"/>
+                        <outlet property="userAbout" destination="0yz-Io-VcY" id="njA-1h-SJu"/>
                         <outlet property="userInfoLblView" destination="pU5-2c-OgC" id="h2s-SO-13j"/>
+                        <outlet property="userStatus" destination="KVX-Mr-mBS" id="EEY-Ua-0l5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2IE-aT-9mQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

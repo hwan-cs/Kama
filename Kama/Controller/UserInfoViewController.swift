@@ -16,6 +16,9 @@ class UserInfoViewController: UIViewController
     
     @IBOutlet var userInfoLblView: UIView!
     
+    @IBOutlet var userStatus: UILabel!
+    @IBOutlet var userAbout: UILabel!
+    
     var user: KamaUser?
     
     let defaults = UserDefaults.standard
@@ -52,6 +55,51 @@ class UserInfoViewController: UIViewController
             dUserInfoLbl.text = "  도움을 받는 사람\n  이름: \(user!.name)"
             dUserInfoLbl.font = UIFont.systemFont(ofSize: 14)
             dUserInfoLbl.numberOfLines = 0
+        }
+        else
+        {
+            dUserInfoLbl.isHidden = true
+            userInfoLblView.layer.borderColor = UIColor.lightGray.cgColor
+            userInfoLblView.layer.borderWidth = 1
+            userInfoLblView.layer.cornerRadius = 20
+            userStatus.font = UIFont.systemFont(ofSize: 14)
+            userAbout.font = UIFont.systemFont(ofSize: 14)
+            userStatus.layer.borderColor = UIColor.lightGray.cgColor
+            userStatus.layer.borderWidth = 1
+            userStatus.layer.cornerRadius = 20
+            var status = "없음"
+            let num = self.user!.points!
+            if num >= 500
+            {
+                status = "초보 도우미"
+            }
+            if num >= 800
+            {
+                status = "숙련 도우미"
+            }
+            if num >= 1200
+            {
+                status = "착한 사람"
+            }
+            if num >= 1600
+            {
+                status = "도움의 달인"
+            }
+            if num >= 2000
+            {
+                status = "이 시대의 영웅"
+            }
+            if num >= 5000
+            {
+                status = "마더 테레사"
+            }
+            userStatus.text = "칭호\n\(status)"
+            userStatus.textAlignment = .center
+            userStatus.numberOfLines = 0
+            
+            userAbout.text = "   도움을 주는 사람\n   이름: \(self.user!.name)\n   현재 포인트: \(self.user!.points ?? 0) pt"
+            userAbout.numberOfLines = 0
+            userAbout.textAlignment = .center
         }
     }
     
