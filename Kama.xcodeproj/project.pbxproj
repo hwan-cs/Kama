@@ -14,6 +14,7 @@
 		1A0F350F281ECB3B003C4841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350D281ECB3B003C4841 /* LaunchScreen.storyboard */; };
 		1A56A73A284CA8C900101F35 /* RequestedHelpListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56A739284CA8C900101F35 /* RequestedHelpListViewController.swift */; };
 		1A56A73C284CB60300101F35 /* PendingHelpListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56A73B284CB60300101F35 /* PendingHelpListViewController.swift */; };
+		1A56A741284D092400101F35 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A56A740284D092400101F35 /* Pacifico-Regular.ttf */; };
 		1AACD38D28280B0E00A278CD /* registerScreen_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */; };
 		1AACD38F2828C63F00A278CD /* RegisterDisabledUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD38E2828C63F00A278CD /* RegisterDisabledUserViewController.swift */; };
 		1AACD3912828C68700A278CD /* RegisterNonDisabledUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD3902828C68700A278CD /* RegisterNonDisabledUserViewController.swift */; };
@@ -40,6 +41,9 @@
 		1A56A739284CA8C900101F35 /* RequestedHelpListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedHelpListViewController.swift; sourceTree = "<group>"; };
 		1A56A73B284CB60300101F35 /* PendingHelpListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingHelpListViewController.swift; sourceTree = "<group>"; };
 		1A56A73D284CF7CC00101F35 /* Kama.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kama.entitlements; sourceTree = "<group>"; };
+		1A56A73E284D063400101F35 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Main.strings"; sourceTree = "<group>"; };
+		1A56A73F284D063500101F35 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		1A56A740284D092400101F35 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = registerScreen_gif.gif; sourceTree = "<group>"; };
 		1AACD38E2828C63F00A278CD /* RegisterDisabledUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisabledUserViewController.swift; sourceTree = "<group>"; };
 		1AACD3902828C68700A278CD /* RegisterNonDisabledUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNonDisabledUserViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				1AACD3952828C6A400A278CD /* View */,
 				1AACD3942828C69C00A278CD /* Controller */,
 				1A0F350B281ECB3B003C4841 /* Assets.xcassets */,
+				1A56A740284D092400101F35 /* Pacifico-Regular.ttf */,
 				1A0F350D281ECB3B003C4841 /* LaunchScreen.storyboard */,
 				1A0F3510281ECB3B003C4841 /* Info.plist */,
 				1AF15B9F28315C2D00FBB25F /* Constants.swift */,
@@ -202,6 +207,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"en-GB",
 			);
 			mainGroup = 1A0F34F6281ECB37003C4841;
 			productRefGroup = 1A0F3500281ECB37003C4841 /* Products */;
@@ -221,6 +227,7 @@
 				1AACD38D28280B0E00A278CD /* registerScreen_gif.gif in Resources */,
 				1A0F350F281ECB3B003C4841 /* LaunchScreen.storyboard in Resources */,
 				1A0F350C281ECB3B003C4841 /* Assets.xcassets in Resources */,
+				1A56A741284D092400101F35 /* Pacifico-Regular.ttf in Resources */,
 				1AF15B9E282D79A700FBB25F /* GoogleService-Info.plist in Resources */,
 				1A0F350A281ECB37003C4841 /* Main.storyboard in Resources */,
 			);
@@ -316,6 +323,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1A0F3509281ECB37003C4841 /* Base */,
+				1A56A73E284D063400101F35 /* en-GB */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -324,6 +332,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1A0F350E281ECB3B003C4841 /* Base */,
+				1A56A73F284D063500101F35 /* en-GB */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -396,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

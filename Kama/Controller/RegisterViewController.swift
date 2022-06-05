@@ -13,13 +13,10 @@ class RegisterViewController: UIViewController
     @IBOutlet var needHelpButton: UIButton!
     @IBOutlet var giveHelpButton: UIButton!
     
-    @IBOutlet var registerScreenGif: GIFImageView!
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0.98, green: 0.97, blue: 0.92, alpha: 1.00)
-        registerScreenGif.animate(withGIFNamed: "registerScreen_gif")
         needHelpButton.backgroundColor = UIColor(red: 0.76, green: 0.77, blue: 0.50, alpha: 1.00)
         needHelpButton.layer.shadowColor = UIColor.black.cgColor
         needHelpButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)

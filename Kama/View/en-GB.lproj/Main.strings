@@ -1,0 +1,81 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0yz-Io-VcY"; */
+"0yz-Io-VcY.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "완료되지 않은 도움 목록"; ObjectID = "Dhk-2y-Ns4"; */
+"Dhk-2y-Ns4.configuration.title" = "완료되지 않은 도움 목록";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Dhk-2y-Ns4"; */
+"Dhk-2y-Ns4.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "회원가입 (비장애인)"; ObjectID = "DvH-5N-i1k"; */
+"DvH-5N-i1k.title" = "Sign up (Non-Disabled)";
+
+/* Class = "UIButton"; normalTitle = "도움이 필요해요!"; ObjectID = "Hza-9D-LgG"; */
+"Hza-9D-LgG.normalTitle" = "I need help!";
+
+/* Class = "UITextView"; text = "회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.\n카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.\n본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.\n불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.\n투명하고 목적에 맞게 사용해주시길 바랍니다."; ObjectID = "I1c-uU-IrL"; */
+"I1c-uU-IrL.text" = "회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.\n카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.\n본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.\n불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.\n투명하고 목적에 맞게 사용해주시길 바랍니다.";
+
+/* Class = "UINavigationItem"; title = "회원가입"; ObjectID = "IUY-om-rbq"; */
+"IUY-om-rbq.title" = "Sign up (Disabled)";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KVX-Mr-mBS"; */
+"KVX-Mr-mBS.text" = "Label";
+
+/* Class = "UILabel"; text = "이용약관"; ObjectID = "Kjk-hS-JOr"; */
+"Kjk-hS-JOr.text" = "Terms of agreement";
+
+/* Class = "UINavigationItem"; title = "로그인"; ObjectID = "ThF-hE-4dp"; */
+"ThF-hE-4dp.title" = "Login";
+
+/* Class = "UINavigationItem"; title = "마이 페이지"; ObjectID = "Wzn-Ew-BII"; */
+"Wzn-Ew-BII.title" = "My Page";
+
+/* Class = "UIBarButtonItem"; title = "로그아웃"; ObjectID = "ZWp-SQ-Iej"; */
+"ZWp-SQ-Iej.title" = "Log out";
+
+/* Class = "UIButton"; configuration.title = "로그인"; ObjectID = "dG9-ZM-uzA"; */
+"dG9-ZM-uzA.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dG9-ZM-uzA"; */
+"dG9-ZM-uzA.normalTitle" = "Button";
+
+/* Class = "UITextView"; text = "회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.\n카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.\n본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.\n불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.\n투명하고 목적에 맞게 사용해주시길 바랍니다."; ObjectID = "dNI-dP-iYn"; */
+"dNI-dP-iYn.text" = "회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.\n카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.\n본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.\n불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.\n투명하고 목적에 맞게 사용해주시길 바랍니다.";
+
+/* Class = "UIButton"; normalTitle = "도움을 줄래요!"; ObjectID = "eCf-YW-7b0"; */
+"eCf-YW-7b0.normalTitle" = "I want to help!";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ioZ-Dx-64P"; */
+"ioZ-Dx-64P.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "이미 회원이신가요?"; ObjectID = "jlk-8z-TYb"; */
+"jlk-8z-TYb.configuration.title" = "Already a member?";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jlk-8z-TYb"; */
+"jlk-8z-TYb.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "카마"; ObjectID = "jrv-9P-lc3"; */
+"jrv-9P-lc3.title" = "Kama";
+
+/* Class = "UILabel"; text = "이용약관"; ObjectID = "n2Q-C4-Clp"; */
+"n2Q-C4-Clp.text" = "Terms of service";
+
+/* Class = "UIButton"; configuration.title = "생성한 도움 목록"; ObjectID = "o7q-T0-z1N"; */
+"o7q-T0-z1N.configuration.title" = "Lis of requested helps";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "o7q-T0-z1N"; */
+"o7q-T0-z1N.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "동의하고 가입하기"; ObjectID = "wk3-Uh-ARn"; */
+"wk3-Uh-ARn.configuration.title" = "Agree and continue";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wk3-Uh-ARn"; */
+"wk3-Uh-ARn.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "동의하고 가입하기"; ObjectID = "zgb-jN-GKC"; */
+"zgb-jN-GKC.configuration.title" = "Agree and continue";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zgb-jN-GKC"; */
+"zgb-jN-GKC.normalTitle" = "Button";

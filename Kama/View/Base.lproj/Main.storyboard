@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pacifico-Regular.ttf">
+            <string>Pacifico-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Register View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,19 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="up7-EJ-1jv" customClass="GIFImageView" customModule="Gifu">
-                                <rect key="frame" x="0.0" y="64" width="414" height="480"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="480" id="4u3-k8-OHI"/>
-                                    <constraint firstAttribute="width" constant="414" id="SYu-in-HOn"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hza-9D-LgG">
-                                <rect key="frame" x="94" y="583" width="226" height="56"/>
+                                <rect key="frame" x="94" y="465" width="226" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="SDa-tJ-hAY"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="도움이 필요해요!"/>
@@ -38,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCf-YW-7b0">
-                                <rect key="frame" x="94" y="670" width="226" height="56"/>
+                                <rect key="frame" x="94" y="552" width="226" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="7x7-Ci-4IT"/>
@@ -51,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-8z-TYb">
-                                <rect key="frame" x="137.5" y="744" width="139.5" height="18"/>
+                                <rect key="frame" x="137.5" y="626" width="139.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="9lE-oO-9dX"/>
                                 </constraints>
@@ -72,19 +71,37 @@
                                     <segue destination="rcL-Fz-G2H" kind="show" id="5OO-h5-ajB"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aGoodKarma" translatesAutoresizingMaskIntoConstraints="NO" id="6hw-sV-FCI">
+                                <rect key="frame" x="152.5" y="355" width="109" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="6yV-1y-PXA"/>
+                                    <constraint firstAttribute="height" constant="50" id="TzD-Wh-Pjr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kama" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LrB-bP-0dN">
+                                <rect key="frame" x="87" y="223" width="240" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="6QN-1Y-CGU"/>
+                                    <constraint firstAttribute="width" constant="240" id="K5X-3W-zKU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="77"/>
+                                <color key="textColor" red="0.25098039215686274" green="0.19215686274509802" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Hza-9D-LgG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="9Rx-uO-0Q4"/>
-                            <constraint firstItem="up7-EJ-1jv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="H88-wq-GAt"/>
+                            <constraint firstItem="Hza-9D-LgG" firstAttribute="top" secondItem="6hw-sV-FCI" secondAttribute="bottom" constant="60" id="H0G-xI-Qy4"/>
                             <constraint firstItem="eCf-YW-7b0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="IvG-mz-jgg"/>
                             <constraint firstItem="eCf-YW-7b0" firstAttribute="top" secondItem="Hza-9D-LgG" secondAttribute="bottom" constant="31" id="LSm-df-EN5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="up7-EJ-1jv" secondAttribute="trailing" id="Ott-UN-9tK"/>
+                            <constraint firstItem="LrB-bP-0dN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QrE-lZ-Bdq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eCf-YW-7b0" secondAttribute="trailing" constant="94" id="Wdm-1l-bGP"/>
-                            <constraint firstItem="up7-EJ-1jv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Y5z-sE-YdJ"/>
-                            <constraint firstItem="Hza-9D-LgG" firstAttribute="top" secondItem="up7-EJ-1jv" secondAttribute="bottom" constant="39" id="ccR-ZQ-pT6"/>
+                            <constraint firstItem="6hw-sV-FCI" firstAttribute="top" secondItem="LrB-bP-0dN" secondAttribute="bottom" constant="12" id="YI6-86-2F7"/>
                             <constraint firstItem="jlk-8z-TYb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hZA-bd-XOu"/>
+                            <constraint firstItem="LrB-bP-0dN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="135" id="hgz-Kr-AY6"/>
+                            <constraint firstItem="6hw-sV-FCI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ruZ-Lk-Jb3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hza-9D-LgG" secondAttribute="trailing" constant="94" id="wGC-ud-4dW"/>
                             <constraint firstItem="jlk-8z-TYb" firstAttribute="top" secondItem="eCf-YW-7b0" secondAttribute="bottom" constant="18" id="z2n-sY-x58"/>
                         </constraints>
@@ -93,7 +110,6 @@
                     <connections>
                         <outlet property="giveHelpButton" destination="eCf-YW-7b0" id="0V6-3M-htP"/>
                         <outlet property="needHelpButton" destination="Hza-9D-LgG" id="PVJ-xe-wbc"/>
-                        <outlet property="registerScreenGif" destination="up7-EJ-1jv" id="PYS-Ys-QC6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -212,11 +228,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="329" id="QQZ-S8-e8y"/>
                                                 </constraints>
-                                                <mutableString key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
+                                                <string key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
 카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.
 본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.
 불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.
-투명하고 목적에 맞게 사용해주시길 바랍니다.</mutableString>
+투명하고 목적에 맞게 사용해주시길 바랍니다.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -585,11 +601,11 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="329" id="oAp-BV-O8W"/>
                                                 </constraints>
-                                                <mutableString key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
+                                                <string key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
 카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.
 본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.
 불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.
-투명하고 목적에 맞게 사용해주시길 바랍니다.</mutableString>
+투명하고 목적에 맞게 사용해주시길 바랍니다.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -680,14 +696,11 @@
                                                 <action selector="logOutButtonTapped:" destination="scA-3n-4VG" id="w2k-cE-Ng1"/>
                                             </connections>
                                         </barButtonItem>
-                                        <rightBarButtonItems>
-                                            <barButtonItem image="bell.fill" catalog="system" id="tsx-r6-4Nv"/>
-                                            <barButtonItem image="person.fill" catalog="system" id="gM1-TP-yLB">
-                                                <connections>
-                                                    <action selector="userInfoButtonTapped:" destination="scA-3n-4VG" id="6LZ-WK-TsM"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </rightBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" image="person.fill" catalog="system" id="gM1-TP-yLB">
+                                            <connections>
+                                                <action selector="userInfoButtonTapped:" destination="scA-3n-4VG" id="6LZ-WK-TsM"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -891,7 +904,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
+        <image name="aGoodKarma" width="116" height="37"/>
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
