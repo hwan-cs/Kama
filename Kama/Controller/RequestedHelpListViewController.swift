@@ -18,13 +18,21 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
     let scrollView = UIScrollView()
     
     let db = Firestore.firestore()
+    
+    var count = 0
+    var helpList = [KamaHelp]()
+    
     var user: KamaUser?
+    
+    let dispatchGroup = DispatchGroup()
+    
+    var contentStackView =  UIStackView()
     
     // 1
     lazy var containerView: UIView =
     {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.98, green: 0.97, blue: 0.92, alpha: 1.00)
+        view.backgroundColor = .white
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
         return view
@@ -48,17 +56,6 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
         return label
     }()
     
-    lazy var contentStackView: UIStackView =
-    {
-        let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, spacer])
-        stackView.alignment = .center
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.spacing = 30
-        return stackView
-    }()
-    
     // 3. Dynamic container constraint
     var containerViewHeightConstraint: NSLayoutConstraint?
     var containerViewBottomConstraint: NSLayoutConstraint?
@@ -67,20 +64,74 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
     {
         super.viewDidLoad()
         self.hideKeyboard()
-        loadData()
-        setupView()
-        setupConstraints()
-        setupPanGesture()
+        dispatchGroup.enter()
+        self.loadData()
+        dispatchGroup.notify(queue: .main)
+        {
+            self.setupView()
+            self.setupConstraints()
+            self.setupPanGesture()
+        }
     }
     
     func setupView()
     {
         view.backgroundColor = .clear
+        let spacer = UIView()
+        let numLabel = UILabel()
+        numLabel.text = "총 \(self.count) 건"
+        let line = UIView()
+        line.backgroundColor = .lightGray
+        line.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
+        contentStackView = UIStackView(arrangedSubviews: [titleLabel, numLabel, line])
+        for help in helpList
+        {
+            let helpLabel = UILabel()
+            helpLabel.layer.cornerRadius = 20
+            helpLabel.layer.borderColor = UIColor.lightGray.cgColor
+            helpLabel.layer.borderWidth = 1
+            helpLabel.numberOfLines = 2
+            helpLabel.adjustsFontSizeToFitWidth = true
+            helpLabel.text = "   \(help.title), \(help.userName), \(help.point) pts, \(help.category)"
+            helpLabel.textAlignment = .left
+            helpLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            contentStackView.addArrangedSubview(helpLabel)
+        }
+        contentStackView.addArrangedSubview(spacer)
+       // contentStackView.alignment = .center
+        contentStackView.axis = .vertical
+        contentStackView.distribution = .equalCentering
+        contentStackView.spacing = 30
+        
     }
     
     func loadData()
     {
-        
+        db.collection("kamaDB").whereField("uuid", isNotEqualTo: false).getDocuments
+        { querySnapShot, error in
+            if let e = error
+            {
+                print("There was an issue retrieving data from Firestore \(e)")
+            }
+            else
+            {
+                if let snapshotDocuments = querySnapShot?.documents
+                {
+                    for doc in snapshotDocuments
+                    {
+                        let data = doc.data()
+                        print(self.user!.id)
+                        if data["requestedBy"] as! String == self.user!.id
+                        {
+                            let kama = KamaHelp(category: data["category"] as! String, point: data["point"] as! Int, userName: data["userName"] as! String, requestAccepted: data["requestAccepted"] as! Bool, title: data["title"] as! String)
+                            self.count += 1
+                            self.helpList.append(kama)
+                        }
+                    }
+                    self.dispatchGroup.leave()
+                }
+            }
+        }
     }
     
     func setupConstraints()

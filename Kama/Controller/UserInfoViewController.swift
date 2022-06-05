@@ -67,13 +67,19 @@ class UserInfoViewController: UIViewController
     
     @IBAction func showRequestedHelpList(_ sender: UIButton)
     {
-        
+        let vc = RequestedHelpListViewController()
+        vc.user = self.user!
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
     
     
     @IBAction func showPendingRequestList(_ sender: UIButton)
     {
-        
+        let vc = PendingHelpListViewController()
+        vc.user = self.user!
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
 }
 

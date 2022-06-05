@@ -13,6 +13,7 @@
 		1A0F350C281ECB3B003C4841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350B281ECB3B003C4841 /* Assets.xcassets */; };
 		1A0F350F281ECB3B003C4841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0F350D281ECB3B003C4841 /* LaunchScreen.storyboard */; };
 		1A56A73A284CA8C900101F35 /* RequestedHelpListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56A739284CA8C900101F35 /* RequestedHelpListViewController.swift */; };
+		1A56A73C284CB60300101F35 /* PendingHelpListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56A73B284CB60300101F35 /* PendingHelpListViewController.swift */; };
 		1AACD38D28280B0E00A278CD /* registerScreen_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */; };
 		1AACD38F2828C63F00A278CD /* RegisterDisabledUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD38E2828C63F00A278CD /* RegisterDisabledUserViewController.swift */; };
 		1AACD3912828C68700A278CD /* RegisterNonDisabledUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AACD3902828C68700A278CD /* RegisterNonDisabledUserViewController.swift */; };
@@ -37,6 +38,7 @@
 		1A0F350E281ECB3B003C4841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0F3510281ECB3B003C4841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A56A739284CA8C900101F35 /* RequestedHelpListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedHelpListViewController.swift; sourceTree = "<group>"; };
+		1A56A73B284CB60300101F35 /* PendingHelpListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingHelpListViewController.swift; sourceTree = "<group>"; };
 		1AACD38C28280B0D00A278CD /* registerScreen_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = registerScreen_gif.gif; sourceTree = "<group>"; };
 		1AACD38E2828C63F00A278CD /* RegisterDisabledUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDisabledUserViewController.swift; sourceTree = "<group>"; };
 		1AACD3902828C68700A278CD /* RegisterNonDisabledUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNonDisabledUserViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				1AF15C1C2843CB8200FBB25F /* DetailViewController.swift */,
 				1AEE6E0F28486A3A00D91458 /* UserInfoViewController.swift */,
 				1A56A739284CA8C900101F35 /* RequestedHelpListViewController.swift */,
+				1A56A73B284CB60300101F35 /* PendingHelpListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				1AACD3912828C68700A278CD /* RegisterNonDisabledUserViewController.swift in Sources */,
 				1A0F3507281ECB37003C4841 /* RegisterViewController.swift in Sources */,
 				1AEE6E1028486A3A00D91458 /* UserInfoViewController.swift in Sources */,
+				1A56A73C284CB60300101F35 /* PendingHelpListViewController.swift in Sources */,
 				1A56A73A284CA8C900101F35 /* RequestedHelpListViewController.swift in Sources */,
 				1AF15C18283CCEE700FBB25F /* HelpViewController.swift in Sources */,
 				1AF15C1F2843D23000FBB25F /* Help.swift in Sources */,

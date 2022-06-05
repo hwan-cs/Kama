@@ -10,17 +10,17 @@ import FirebaseFirestore
 
 struct KamaHelp
 {
-    var category: String
+    let category: String
     var description: String?
     var location: GeoPoint
-    var title: String
-    var time: Timestamp
-    var userName: String
-    var uuid: String
-    var requestedBy: String
-    var requestAccepted: Bool
+    let title: String
+    let time: Timestamp
+    let userName: String
+    let uuid: String
+    let requestedBy: String
+    let requestAccepted: Bool
     var acceptedBy: String?
-    var point: Int
+    let point: Int
     
     init(category: String, description: String, location: GeoPoint, title: String, time: Timestamp, userName:String, uuid: String, requestedBy: String, requestAccepted: Bool, acceptedBy: String, point: Int)
     {
@@ -35,5 +35,19 @@ struct KamaHelp
         self.requestedBy = requestedBy
         self.acceptedBy = acceptedBy
         self.point = point
+    }
+    
+    init(category: String, point: Int, userName: String, requestAccepted: Bool, title: String)
+    {
+        self.category = category
+        self.point = point
+        self.userName = userName
+        self.requestAccepted = requestAccepted
+        self.title = title
+        
+        self.location = GeoPoint(latitude: 0, longitude: 0)
+        self.time = Timestamp()
+        self.uuid = ""
+        self.requestedBy = ""
     }
 }

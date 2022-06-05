@@ -29,6 +29,8 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     var onDismissBlock : ((Bool) -> Void)?
     
+    var point = 100
+    
     // 1
     lazy var containerView: UIView =
     {
@@ -155,23 +157,9 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var pointLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "지급할 포인트"
+        label.text = "지급할 포인트: \(point) pts"
         label.font = .boldSystemFont(ofSize: 16)
         return label
-    }()
-    
-    lazy var pointTextField: TweeBorderedTextField =
-    {
-        let textfield = TweeBorderedTextField()
-        textfield.delegate = self
-        textfield.lineColor = .lightGray
-        textfield.placeholderColor = .lightGray
-        textfield.tweePlaceholder = "포인트"
-        textfield.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        textfield.layer.cornerRadius = 25
-        textfield.font = .systemFont(ofSize: 16)
-        textfield.textColor = .darkGray
-        return textfield
     }()
     
     lazy var registerButton: UIButton =
@@ -198,7 +186,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var contentStackView: UIStackView =
     {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, dropDownButton, deadlineLabel, datePickerView,  pointLabel, pointTextField, registerButton, foo, spacer])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, dropDownButton, deadlineLabel, datePickerView,  pointLabel, registerButton, foo, spacer])
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 30
@@ -414,7 +402,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
                 let firestoreLoc = FirebaseFirestore.GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
                 ref.setData(["userName": self.user!.name, "location": firestoreLoc, "title": self.titleHelp.text!, "time": self.datePicker.date,"category": self.dropDown.selectedItem,
                              "description":self.helpDetail.text!, "uuid": UUID().uuidString, "requestedBy": self.user!.id, "requestAccepted": false, "acceptedBy": "",
-                             "point": Int(self.pointTextField.text!)!])
+                             "point": self.point])
                 { error in
                 if let e = error
                     {
