@@ -174,6 +174,7 @@ class MainViewController: UIViewController
     {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "UserInfoViewController") as! UserInfoViewController
         vc.modalPresentationStyle = .fullScreen
+        vc.user = self.user!
         self.present(vc, animated: true, completion: nil)
     }
     

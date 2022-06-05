@@ -1,31 +1,23 @@
 //
-//  DetailViewController.swift
+//  RequestedHelpListViewController.swift
 //  Kama
 //
-//  Created by Jung Hwan Park on 2022/05/30.
+//  Created by Jung Hwan Park on 2022/06/05.
 //
 
 import UIKit
-import TweeTextField
 import FirebaseFirestore
-import CoreLocation
-import DropDown
 
-class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
+class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
     let defaultHeight: CGFloat = 500
     let dismissibleHeight: CGFloat = 250
     let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 200
     // keep updated with new height
     var currentContainerHeight: CGFloat = 500
-    var dropDown = DropDown()
     let scrollView = UIScrollView()
     
     let db = Firestore.firestore()
-    
-    var onDismissBlock : ((Bool) -> Void)?
-    
-    var help: KamaHelp?
     var user: KamaUser?
     
     // 1
@@ -51,144 +43,16 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "제목"
+        label.text = "생성한 도움 목록"
         label.font = .boldSystemFont(ofSize: 20)
         return label
-    }()
-    
-    lazy var titleHelp: UILabel =
-    {
-        let titleLabel = UILabel()
-        titleLabel.text = "\t\(help!.title)"
-        titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        titleLabel.layer.cornerRadius = 25
-        titleLabel.font = .systemFont(ofSize: 16)
-        titleLabel.textColor = .darkGray
-        titleLabel.layer.cornerRadius = 25
-        titleLabel.layer.borderColor = UIColor.lightGray.cgColor
-        titleLabel.layer.borderWidth = 1
-        return titleLabel
-    }()
-    
-    lazy var helpDetailTitle: UILabel =
-    {
-        let title = UILabel()
-        title.text = "요청 세부사항"
-        title.font = .boldSystemFont(ofSize: 16)
-        return title
-    }()
-    
-    lazy var helpDetail: UILabel =
-    {
-        let textView = UILabel()
-        textView.text = "\t\(help!.description!)"
-        textView.textColor = UIColor.lightGray
-        textView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        textView.font = .systemFont(ofSize: 16)
-        textView.layer.cornerRadius = 25
-        textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        return textView
-    }()
-    
-    lazy var categoryTitle: UILabel =
-    {
-        let title = UILabel()
-        title.text = "카테고리"
-        title.font = .boldSystemFont(ofSize: 20)
-        return title
-    }()
-    
-    lazy var categoryLabel: UILabel =
-    {
-        let categoryLabel = UILabel()
-        categoryLabel.text = "\t\(help!.category)"
-        categoryLabel.font = .systemFont(ofSize: 16)
-        categoryLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        categoryLabel.layer.cornerRadius = 25
-        categoryLabel.layer.borderWidth = 1
-        categoryLabel.layer.borderColor = UIColor.lightGray.cgColor
-        return categoryLabel
-    }()
-    
-    lazy var deadlineTitle: UILabel =
-    {
-        let label = UILabel()
-        label.text = "데드라인"
-        label.font = .boldSystemFont(ofSize: 20)
-        return label
-    }()
-    
-    lazy var deadlineLabel: UILabel =
-    {
-        let label = UILabel()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm E, d MMM y"
-        label.text = formatter.string(from: help!.time.dateValue())
-        label.font = .boldSystemFont(ofSize: 20)
-        return label
-    }()
-    
-    lazy var pointLabel: UILabel =
-    {
-        let label = UILabel()
-        label.text = "포인트: \(help!.point)pt"
-        label.font = .boldSystemFont(ofSize: 16)
-        return label
-    }()
-    
-    lazy var userName: UILabel =
-    {
-        let label = UILabel()
-        label.text = "도움 요청인: \(help!.userName)"
-        label.font = .boldSystemFont(ofSize: 20)
-        return label
-    }()
-        
-    lazy var okButton: UIButton =
-    {
-        let register = UIButton()
-        register.layer.cornerRadius = 25
-        register.setTitleColor(.black, for: .normal)
-        register.layer.borderWidth = 1
-        register.layer.borderColor = UIColor.lightGray.cgColor
-        register.backgroundColor = UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
-        register.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        if help!.requestAccepted == true
-        {
-            if help!.requestedBy == user!.id
-            {
-                register.setTitle(user!.disabled == true ? "완료" : "이미 수락한 도움입니다!", for: .normal)
-                register.backgroundColor = user!.disabled == true ? UIColor(red: 1.00, green: 0.94, blue: 0.82, alpha: 1.00) : UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
-                register.addTarget(self, action: #selector(completedButtonTapped), for: .touchUpInside)
-            }
-            else
-            {
-                register.setTitle(user!.disabled == true ? "확인" : "이미 수락한 도움입니다!", for: .normal)
-                register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
-            }
-        }
-        else
-        {
-            register.setTitle(user!.disabled == true ? "확인" : "수락하기", for: .normal)
-            register.backgroundColor = UIColor(red: 0.57, green: 0.89, blue: 0.65, alpha: 1.00)
-            if user!.disabled
-            {
-                register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
-            }
-            else
-            {
-                register.addTarget(self, action: #selector(okButtonTapped), for: .touchUpInside)
-            }
-        }
-        return register
     }()
     
     lazy var contentStackView: UIStackView =
     {
         let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, titleHelp, helpDetailTitle, helpDetail, categoryTitle, categoryLabel, deadlineTitle, deadlineLabel,
-                                                       pointLabel, userName, okButton, spacer])
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, spacer])
+        stackView.alignment = .center
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.spacing = 30
@@ -203,6 +67,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     {
         super.viewDidLoad()
         self.hideKeyboard()
+        loadData()
         setupView()
         setupConstraints()
         setupPanGesture()
@@ -211,6 +76,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     func setupView()
     {
         view.backgroundColor = .clear
+    }
+    
+    func loadData()
+    {
+        
     }
     
     func setupConstraints()
@@ -318,53 +188,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
         view.addGestureRecognizer(panGesture)
-    }
-    
-    @objc func okButtonTapped()
-    {
-        db.collection("kamaDB").whereField("uuid", isEqualTo: self.help!.uuid).getDocuments
-        { querySnapShot, error in
-            if let e = error
-            {
-                print("There was an issue retrieving data from Firestore \(e)")
-            }
-            else
-            {
-                for document in querySnapShot!.documents
-                {
-                    document.reference.updateData(["requestAccepted" : true])
-                    document.reference.updateData(["acceptedBy" : self.user!.id])
-                }
-            }
-        }
-        self.showAlert("요청 수락 완료!", 50, 50, completionHandler: {
-            self.dismiss(animated: true, completion: nil)
-        })
-    }
-    
-    @objc func completedButtonTapped()
-    {
-        db.collection("userDB").whereField("id", isEqualTo: self.help!.acceptedBy!).getDocuments
-        { querySnapShot, error in
-            if let e = error
-            {
-                print("There was an issue retrieving data from Firestore \(e)")
-            }
-            else
-            {
-                for document in querySnapShot!.documents
-                {
-                    let data = document.data()
-                    document.reference.updateData(["point": (data["point"] as! Int) + self.help!.point])
-                    print("give \((data["point"] as! Int) + self.help!.point)points")
-                }
-            }
-        }
-        self.showAlert("도움 완료! \(self.help!.point)pt 지급!", 100, 100) {
-            self.dismiss(animated: true) {
-                self.onDismissBlock!(true)
-            }
-        }
     }
     
     @objc func dismissOnTap()
@@ -480,3 +303,4 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         }
     }
 }
+
