@@ -234,6 +234,7 @@ extension MainViewController: GMSMapViewDelegate
                                 vc.modalPresentationStyle = .overCurrentContext
                                 self.present(vc, animated: true)
                             }
+                            print("test")
                         }
                     }
                 }
