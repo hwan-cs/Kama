@@ -54,7 +54,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "도움 요청하기 "
+        label.text = "Ask for help "
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -73,7 +73,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         titleLabel.placeholderColor = .lightGray
         titleLabel.placeholderInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
         titleLabel.lineWidth = 1
-        titleLabel.tweePlaceholder = "제목 "
+        titleLabel.tweePlaceholder = "Title "
         titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         titleLabel.layer.cornerRadius = 25
         titleLabel.font = .systemFont(ofSize: 16)
@@ -84,7 +84,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var helpDetailTitle: UILabel =
     {
         let title = UILabel()
-        title.text = "요청 세부사항 "
+        title.text = "Help specification "
         title.font = .boldSystemFont(ofSize: 16)
         return title
     }()
@@ -92,7 +92,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var helpDetail: UITextView =
     {
         let textView = UITextView()
-        textView.text = "   요청 세부사항을 입력하세요"
+        textView.text = "   Enter the specifications of your request"
         textView.textColor = UIColor.lightGray
         textView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         textView.font = .systemFont(ofSize: 16)
@@ -108,7 +108,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         dropDownButton.backgroundColor = .white
         dropDownButton.layer.borderWidth = 1
         dropDownButton.layer.cornerRadius = 20
-        dropDownButton.setTitle("카테고리를 선택하세요", for: .normal)
+        dropDownButton.setTitle("Select the category", for: .normal)
         dropDownButton.setTitleColor(.black, for: .normal)
         DropDown.appearance().textFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
         dropDown.anchorView = dropDownButton
@@ -122,7 +122,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         { [unowned self] (index: Int, item: String) in
             dropDownButton.setTitle(item, for: .normal)
         }
-        let data = ["청소, 집안일", "말동무","동행, 돌봄","반려동물","배달","운반, 수리","기타"]
+        let data = ["Cleaning, Chore", "Talking buddy","Companion, Care","Pet","Delivery","Carry, Repair","Etc"]
         dropDown.dataSource = data
         dropDownButton.addTarget(self, action: #selector(categoryButtonTapped), for: .touchUpInside)
         return dropDownButton
@@ -131,7 +131,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var deadlineLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "데드라인 날짜 및 시간 설정"
+        label.text = "Select dealine"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
@@ -157,7 +157,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var pointLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "지급할 포인트: \(point) pts"
+        label.text = "Point to give: \(point) pts"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
@@ -165,7 +165,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     lazy var registerButton: UIButton =
     {
         let register = UIButton()
-        register.setTitle("등록하기", for: .normal)
+        register.setTitle("Register", for: .normal)
         register.layer.cornerRadius = 20
         register.setTitleColor(.black, for: .normal)
         register.layer.borderWidth = 1
@@ -391,9 +391,9 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @objc func registerHelpTapped()
     {
-        let alert = UIAlertController(title: "저장하시겠습니까?", message: "한번 저장하면 다시 바꿀 수 없습니다. ", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure you want to register?", message: "Once registered changes cannot be made. ", preferredStyle: .alert)
         //예외처리 해야됨
-        let action = UIAlertAction(title: "예", style: .default)
+        let action = UIAlertAction(title: "Yes", style: .default)
         { (action) in
             let ref = self.db.collection("kamaDB").document()
             if let location = self.locationManager?.location
@@ -419,7 +419,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(action)
-        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
               print("Alert dismissed")
         }))
         present(alert, animated: true, completion: nil)
@@ -462,7 +462,7 @@ class HelpViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     {
         if textView.text.isEmpty
         {
-            textView.text = "   요청 세부사항을 입력하세요"
+            textView.text = "   Enter the specifications of your request"
             textView.textColor = UIColor.lightGray
         }
     }

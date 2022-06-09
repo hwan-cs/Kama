@@ -31,7 +31,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="도움이 필요해요!"/>
+                                <state key="normal" title="I need help!"/>
                                 <connections>
                                     <segue destination="rOU-wp-svZ" kind="show" id="ic7-2r-F1z"/>
                                 </connections>
@@ -44,13 +44,13 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="도움을 줄래요!"/>
+                                <state key="normal" title="I want to help!"/>
                                 <connections>
                                     <segue destination="bY8-n7-r1q" kind="show" id="zsm-g5-N13"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlk-8z-TYb">
-                                <rect key="frame" x="137.5" y="626" width="139.5" height="18"/>
+                                <rect key="frame" x="128.5" y="626" width="157" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="9lE-oO-9dX"/>
                                 </constraints>
@@ -58,10 +58,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="이미 회원이신가요?">
+                                        <fragment content="Already a member?">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <font key="NSFont" metaFont="system" size="15"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
                                         </fragment>
@@ -116,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="1039.1304347826087" y="81.696428571428569"/>
         </scene>
-        <!--회원가입-->
+        <!--Signup-->
         <scene sceneID="5sx-8K-LWI">
             <objects>
                 <viewController id="rOU-wp-svZ" customClass="RegisterDisabledUserViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,7 +140,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*Name"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
                                                         <color key="value" name="AccentColor"/>
                                                     </userDefinedRuntimeAttribute>
@@ -175,7 +176,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*비밀번호"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*Password"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="infoAnimationDuration">
                                                         <real key="value" value="0.20000000000000001"/>
                                                     </userDefinedRuntimeAttribute>
@@ -213,8 +214,8 @@
                                                     <action selector="dPasswordEditingDidEnd:" destination="rOU-wp-svZ" eventType="editingDidEnd" id="aAo-BL-dcS"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2Q-C4-Clp">
-                                                <rect key="frame" x="52" y="266" width="59" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2Q-C4-Clp">
+                                                <rect key="frame" x="52" y="266" width="154" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="sqq-6A-CL1"/>
                                                 </constraints>
@@ -228,11 +229,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="329" id="QQZ-S8-e8y"/>
                                                 </constraints>
-                                                <string key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
-카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.
-본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.
-불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.
-투명하고 목적에 맞게 사용해주시길 바랍니다.</string>
+                                                <mutableString key="text">Please read the Terms of agreement throughly before using Kama.
+Users are separated into two categories;helper, and beneficiary. The beneficiary is a person with special needs, owning a disability ID. Although our service does not check for authentication of disability, if a user does not use the app as the intended purpose, said user’s account will be suspended from usage. Illegal activity cannot be asked for help, and even if such help was requested, one should not accept the request. Accepting such request can also end up in the suspension of user’s account. Please use Kama as the intended purpose that is; to create a more inclusive community and reduce inequality. </mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -245,7 +243,7 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="동의하고 가입하기">
+                                                <buttonConfiguration key="configuration" style="plain" title="Agree and sign up">
                                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -292,7 +290,7 @@
                             <constraint firstItem="sDx-Ik-ftx" firstAttribute="leading" secondItem="QOB-W7-m0M" secondAttribute="leading" id="xNF-p2-Zfi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="회원가입" id="IUY-om-rbq"/>
+                    <navigationItem key="navigationItem" title="Signup" id="IUY-om-rbq"/>
                     <connections>
                         <outlet property="ConteView" destination="lWs-aY-9Na" id="WIC-62-oO1"/>
                         <outlet property="dTermsAndConditions" destination="dNI-dP-iYn" id="R5t-UU-4ZM"/>
@@ -319,7 +317,7 @@
             </objects>
             <point key="canvasLocation" x="3077" y="-642"/>
         </scene>
-        <!--로그인-->
+        <!--Login-->
         <scene sceneID="3Aw-k8-p0z">
             <objects>
                 <viewController id="rcL-Fz-G2H" customClass="LoginViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
@@ -366,7 +364,7 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="이름"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="Name"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NDX-Pd-hCK" customClass="TweeAttributedTextField" customModule="TweeTextField">
@@ -410,7 +408,7 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderDuration">
                                                 <real key="value" value="0.20000000000000001"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="비밀번호"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="Password"/>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
@@ -432,7 +430,7 @@
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="로그인">
+                                <buttonConfiguration key="configuration" style="plain" title="Login">
                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -449,7 +447,7 @@
                             <constraint firstItem="5ao-W7-Vu3" firstAttribute="centerX" secondItem="TH3-pf-5xR" secondAttribute="centerX" id="zk5-SG-kyL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="로그인" id="ThF-hE-4dp"/>
+                    <navigationItem key="navigationItem" title="Login" id="ThF-hE-4dp"/>
                     <connections>
                         <outlet property="loginButton" destination="dG9-ZM-uzA" id="kbD-jQ-5QH"/>
                         <outlet property="loginView" destination="5ao-W7-Vu3" id="nfV-Jl-E0S"/>
@@ -494,7 +492,7 @@
             </objects>
             <point key="canvasLocation" x="128.98550724637681" y="81.696428571428569"/>
         </scene>
-        <!--회원가입 (비장애인)-->
+        <!--Signup (Helper)-->
         <scene sceneID="zu7-1Z-X2h">
             <objects>
                 <viewController id="bY8-n7-r1q" customClass="RegisterNonDisabledUserViewController" customModule="Kama" customModuleProvider="target" sceneMemberID="viewController">
@@ -517,7 +515,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*이름"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*Name"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
                                                         <color key="value" name="AccentColor"/>
                                                     </userDefinedRuntimeAttribute>
@@ -556,7 +554,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*비밀번호"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="tweePlaceholder" value="*Password"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="infoTextColor">
                                                         <color key="value" name="AccentColor"/>
                                                     </userDefinedRuntimeAttribute>
@@ -586,8 +584,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-hS-JOr">
-                                                <rect key="frame" x="52" y="266" width="59" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms of agreement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-hS-JOr">
+                                                <rect key="frame" x="52" y="266" width="154" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="MYG-fc-oWs"/>
                                                 </constraints>
@@ -601,11 +599,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="329" id="oAp-BV-O8W"/>
                                                 </constraints>
-                                                <string key="text">회원가입 전 본 이용약관을 충분히 읽어주시길 바랍니다.
-카마는 도움이 필요한 사용자와 도움을 주는 사용자로 나뉘어져있습니다. 도움이 필요한 사용자는 장애인증을 소지하고 있는 사람이어야 합니다.
-본 서비스는 추가적인 신분확인을 하지 않습니다. 그러나, 본 서비스의 취지에 맞지 않게 부정적으로 앱을 사용하실 경우 제재 조치가 취해질 수 있습니다.
-불법적인 일을 도와달라고 요청하면 안되며, 혹여나 그런 요청이 올라왔더라도 수락하시면 안됩니다. 이를 수락할 경우에는 제재 조치가 취해질 수 있습니다.
-투명하고 목적에 맞게 사용해주시길 바랍니다.</string>
+                                                <mutableString key="text">Please read the Terms of agreement throughly before using Kama.
+Users are separated into two categories;helper, and beneficiary. The beneficiary is a person with special needs, owning a disability ID. Although our service does not check for authentication of disability, if a user does not use the app as the intended purpose, said user’s account will be suspended from usage. Illegal activity cannot be asked for help, and even if such help was requested, one should not accept the request. Accepting such request can also end up in the suspension of user’s account. Please use Kama as the intended purpose that is; to create a more inclusive community and reduce inequality. </mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -618,7 +613,7 @@
                                                 </constraints>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="동의하고 가입하기">
+                                                <buttonConfiguration key="configuration" style="plain" title="Agree and sign up">
                                                     <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -666,7 +661,7 @@
                             <constraint firstItem="t2P-dP-6Ka" firstAttribute="leading" secondItem="Bs6-c0-d6a" secondAttribute="leading" id="sde-Nz-uoP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="회원가입 (비장애인)" id="DvH-5N-i1k"/>
+                    <navigationItem key="navigationItem" title="Signup (Helper)" id="DvH-5N-i1k"/>
                     <connections>
                         <outlet property="ContentView" destination="siv-gX-7XH" id="TkU-85-is7"/>
                         <outlet property="passwordTextField" destination="iOk-y3-ONf" id="h1f-zE-OMb"/>
@@ -690,8 +685,8 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="카마" id="jrv-9P-lc3">
-                                        <barButtonItem key="leftBarButtonItem" title="로그아웃" id="ZWp-SQ-Iej">
+                                    <navigationItem title="Kama" id="jrv-9P-lc3">
+                                        <barButtonItem key="leftBarButtonItem" title="Log out" id="ZWp-SQ-Iej">
                                             <connections>
                                                 <action selector="logOutButtonTapped:" destination="scA-3n-4VG" id="w2k-cE-Ng1"/>
                                             </connections>
@@ -743,7 +738,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem title="마이 페이지" id="Wzn-Ew-BII">
+                                    <navigationItem title="My Page" id="Wzn-Ew-BII">
                                         <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="f82-VM-oUh">
                                             <connections>
                                                 <action selector="dismissView:" destination="rSt-zd-q1s" id="HAJ-DC-QyC"/>
@@ -832,7 +827,7 @@
                                             <constraint firstAttribute="height" constant="40" id="A7r-Eh-eAP"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="list.dash" catalog="system" title="생성한 도움 목록"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="list.dash" catalog="system" title="List of help requested"/>
                                         <connections>
                                             <action selector="showRequestedHelpList:" destination="rSt-zd-q1s" eventType="touchUpInside" id="qw8-95-UoN"/>
                                         </connections>
@@ -844,7 +839,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Qa0-0g-AJz"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="checklist" catalog="system" title="완료되지 않은 도움 목록"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="checklist" catalog="system" title="List of pending help"/>
                                         <connections>
                                             <action selector="showPendingRequestList:" destination="rSt-zd-q1s" eventType="touchUpInside" id="VAb-nw-oPW"/>
                                         </connections>

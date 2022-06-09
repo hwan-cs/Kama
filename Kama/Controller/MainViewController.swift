@@ -65,7 +65,7 @@ class MainViewController: UIViewController
         if user!.disabled == true
         {
             let helpButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2-125, y: UIScreen.main.bounds.height-110, width: 250, height: 75))
-            helpButton.setTitle("도와주세요!", for: .normal)
+            helpButton.setTitle("Help!", for: .normal)
             helpButton.setTitleColor(.black, for: .normal)
             helpButton.backgroundColor = UIColor(red: 0.83, green: 0.89, blue: 0.80, alpha: 1.00)
             helpButton.layer.cornerRadius = 37.5
@@ -224,7 +224,7 @@ extension MainViewController: GMSMapViewDelegate
                             let fsuuid = data["uuid"] as! String
                             if fsuuid == uuid
                             {
-                                let help = KamaHelp(category: data["category"] as? String ?? "요청 세부사항이 없습니다", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, title: data["title"] as! String, time: data["time"] as! Timestamp, userName: data["userName"] as! String, uuid: data["uuid"] as! String, requestedBy: data["requestedBy"] as! String, requestAccepted: data["requestAccepted"] as! Bool, acceptedBy: data["acceptedBy"] as? String ?? "", point: data["point"] as! Int)
+                                let help = KamaHelp(category: data["category"] as? String ?? "No specification", description: data["description"] as? String ?? "", location: data["location"] as! GeoPoint, title: data["title"] as! String, time: data["time"] as! Timestamp, userName: data["userName"] as! String, uuid: data["uuid"] as! String, requestedBy: data["requestedBy"] as! String, requestAccepted: data["requestAccepted"] as! Bool, acceptedBy: data["acceptedBy"] as? String ?? "", point: data["point"] as! Int)
                                 let vc = DetailViewController()
                                 vc.help = help
                                 vc.user = self.user
@@ -234,6 +234,7 @@ extension MainViewController: GMSMapViewDelegate
                                 vc.modalPresentationStyle = .overCurrentContext
                                 self.present(vc, animated: true)
                             }
+                            print("test")
                         }
                     }
                 }

@@ -51,7 +51,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "완료되지 않은 도움 목록"
+        label.text = "List of pending help"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -79,7 +79,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
         view.backgroundColor = .clear
         let spacer = UIView()
         let numLabel = UILabel()
-        numLabel.text = "총 \(self.count) 건"
+        numLabel.text = "Total of \(self.count)"
         let line = UIView()
         line.backgroundColor = .lightGray
         line.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
@@ -96,7 +96,7 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
                 helpLabel.adjustsFontSizeToFitWidth = true
                 helpLabel.text = "   \(help.title), \(help.userName), \(help.point) pts, \(help.category)"
                 helpLabel.textAlignment = .left
-                helpLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+                helpLabel.heightAnchor.constraint(equalToConstant: 70).isActive = true
                 contentStackView.addArrangedSubview(helpLabel)
             }
         }
@@ -345,15 +345,6 @@ class PendingHelpListViewController: UIViewController, UITextFieldDelegate, UITe
         {
             textView.text = nil
             textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
-        if textView.text.isEmpty
-        {
-            textView.text = "   요청 세부사항을 입력하세요"
-            textView.textColor = UIColor.lightGray
         }
     }
 }

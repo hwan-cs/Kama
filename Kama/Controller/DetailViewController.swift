@@ -51,7 +51,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "제목"
+        label.text = "Title"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -73,7 +73,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var helpDetailTitle: UILabel =
     {
         let title = UILabel()
-        title.text = "요청 세부사항"
+        title.text = "Help specification "
         title.font = .boldSystemFont(ofSize: 16)
         return title
     }()
@@ -94,7 +94,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var categoryTitle: UILabel =
     {
         let title = UILabel()
-        title.text = "카테고리"
+        title.text = "Category"
         title.font = .boldSystemFont(ofSize: 20)
         return title
     }()
@@ -114,7 +114,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var deadlineTitle: UILabel =
     {
         let label = UILabel()
-        label.text = "데드라인"
+        label.text = "Deadline"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -132,7 +132,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var pointLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "포인트: \(help!.point)pt"
+        label.text = "Point: \(help!.point)pt"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
@@ -140,7 +140,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
     lazy var userName: UILabel =
     {
         let label = UILabel()
-        label.text = "도움 요청인: \(help!.userName)"
+        label.text = "Requested by: \(help!.userName)"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -158,19 +158,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         {
             if help!.requestedBy == user!.id
             {
-                register.setTitle(user!.disabled == true ? "완료" : "이미 수락한 도움입니다!", for: .normal)
+                register.setTitle(user!.disabled == true ? "Ok" : "Help is already accepted!", for: .normal)
                 register.backgroundColor = user!.disabled == true ? UIColor(red: 1.00, green: 0.94, blue: 0.82, alpha: 1.00) : UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.00)
                 register.addTarget(self, action: #selector(completedButtonTapped), for: .touchUpInside)
             }
             else
             {
-                register.setTitle(user!.disabled == true ? "확인" : "이미 수락한 도움입니다!", for: .normal)
+                register.setTitle(user!.disabled == true ? "Ok" : "Help is already accepted!", for: .normal)
                 register.addTarget(self, action: #selector(dismissOnTap), for: .touchUpInside)
             }
         }
         else
         {
-            register.setTitle(user!.disabled == true ? "확인" : "수락하기", for: .normal)
+            register.setTitle(user!.disabled == true ? "Ok" : "Accept help", for: .normal)
             register.backgroundColor = UIColor(red: 0.57, green: 0.89, blue: 0.65, alpha: 1.00)
             if user!.disabled
             {
@@ -469,15 +469,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate, UITextViewDel
         {
             textView.text = nil
             textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
-        if textView.text.isEmpty
-        {
-            textView.text = "   요청 세부사항을 입력하세요"
-            textView.textColor = UIColor.lightGray
         }
     }
 }
