@@ -60,13 +60,13 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
             {
                 sender.activeLineColor = .red
                 sender.infoTextColor = .red
-                sender.showInfo("3글자 이상 입력하세요", animated: true)
+                sender.showInfo("Password must be longer than 3 characters!", animated: true)
             }
             else
             {
                 sender.activeLineColor = .systemGreen
                 sender.infoTextColor = .systemGreen
-                sender.showInfo("올바른 형식입니다", animated: true)
+                sender.showInfo("Valid format", animated: true)
             }
         }
     }
@@ -79,8 +79,8 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
     
     @IBAction func DUserSignUp(_ sender: UIButton)
     {
-        let alert = UIAlertController(title: "회원가입 약관을 다 읽었으며 동의합니다", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "예", style: .default)
+        let alert = UIAlertController(title: "I accept and agree to the Terms of Agreement", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Yes", style: .default)
         { [self] (action) in
             let ref = self.db.collection("userDB").document()
             ref.setData(["userName":self.dUserName.text!, "password": self.dUserPassword.text!, "disabled": true, "id": UUID().uuidString, "point":0])
@@ -97,7 +97,7 @@ class RegisterDisabledUserViewController: UIViewController, UITextFieldDelegate
             }
         }
         alert.addAction(action)
-        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
               print("Alert dismissed")
         }))
         present(alert, animated: true, completion: nil)

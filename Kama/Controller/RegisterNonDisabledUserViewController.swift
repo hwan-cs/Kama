@@ -42,8 +42,8 @@ class RegisterNonDisabledUserViewController: UIViewController, UITextFieldDelega
     }
     @IBAction func NDUserSignUp(_ sender: UIButton)
     {
-        let alert = UIAlertController(title: "회원가입 약관을 다 읽었으며 동의합니다", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "예", style: .default)
+        let alert = UIAlertController(title: "I accept and agree to the Terms of Agreement", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Yes", style: .default)
         { [self] (action) in
             let ref = self.db.collection("userDB").document()
             ref.setData(["userName":self.userNameTextField.text!, "password": self.passwordTextField.text!, "disabled": false, "id": UUID().uuidString, "point":0])
@@ -60,7 +60,7 @@ class RegisterNonDisabledUserViewController: UIViewController, UITextFieldDelega
             }
         }
         alert.addAction(action)
-        alert.addAction(UIAlertAction(title: "아니오", style: .cancel, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { (action: UIAlertAction!) in
               print("Alert dismissed")
         }))
         present(alert, animated: true, completion: nil)

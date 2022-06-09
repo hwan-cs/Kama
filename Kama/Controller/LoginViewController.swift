@@ -78,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                         }
                     }
                 }
-                let alert = UIAlertController(title: "아이디나 비밀번호를 다시 확인해주세요", message: "", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Incorrect ID/Password! Check again", message: "", preferredStyle: .alert)
                 self.present(alert, animated: true, completion: nil)
                 Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
             }

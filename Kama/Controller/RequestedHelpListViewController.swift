@@ -51,7 +51,7 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
     lazy var titleLabel: UILabel =
     {
         let label = UILabel()
-        label.text = "생성한 도움 목록"
+        label.text = "List of help requested"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -79,7 +79,7 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
         view.backgroundColor = .clear
         let spacer = UIView()
         let numLabel = UILabel()
-        numLabel.text = "총 \(self.count) 건"
+        numLabel.text = "Total of \(self.count)"
         let line = UIView()
         line.backgroundColor = .lightGray
         line.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
@@ -94,7 +94,7 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
             helpLabel.adjustsFontSizeToFitWidth = true
             helpLabel.text = "   \(help.title), \(help.userName), \(help.point) pts, \(help.category)"
             helpLabel.textAlignment = .left
-            helpLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            helpLabel.heightAnchor.constraint(equalToConstant: 70).isActive = true
             contentStackView.addArrangedSubview(helpLabel)
         }
         contentStackView.addArrangedSubview(spacer)
@@ -343,15 +343,6 @@ class RequestedHelpListViewController: UIViewController, UITextFieldDelegate, UI
         {
             textView.text = nil
             textView.textColor = UIColor.black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
-        if textView.text.isEmpty
-        {
-            textView.text = "   요청 세부사항을 입력하세요"
-            textView.textColor = UIColor.lightGray
         }
     }
 }
