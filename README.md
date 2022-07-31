@@ -6,14 +6,6 @@
 장애인의 일상생활에 불편을 겪을 때 도움을 신청하고, 도움을 받을 수 있게 하는 앱, "카마" 입니다.
 
 
-| 메인 화면 (1)   | 회원가입 화면       |  로그인 화면    |
-| ------------- | ------------- | ------------- |
-| ![alt text](https://user-images.githubusercontent.com/68496759/182044289-b2e516d2-a784-4069-9643-31794f5d64b4.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044291-70f50b8c-7025-4b39-82c1-e17788dba357.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044296-bf0c0d1d-1bee-4cef-89b6-a81147235b75.png)  |
-
-| 메인 화면 (2)  | 마커 클릭 시 화면 | 마이페이지 |
-| ------------- | ------------- | ------------- |
-| ![alt text](https://user-images.githubusercontent.com/68496759/182044297-bac36cf1-7c05-4070-b651-5f1bf585cc95.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044301-2629acba-895f-4f15-9980-168af604f12d.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044303-4715b247-4939-4042-a995-292e3790ddaa.png) |
-
 ## 기능 🛠
 
 - 회원가입 (헬퍼와 사용자로 구분, DB에 저장) 
@@ -34,6 +26,16 @@
 - Google Places
 - SwiftDate 
 - DropDown
+
+## 스크린샷 (일부만)
+
+| 메인 화면 (1)   | 회원가입 화면       |  로그인 화면    |
+| ------------- | ------------- | ------------- |
+| ![alt text](https://user-images.githubusercontent.com/68496759/182044289-b2e516d2-a784-4069-9643-31794f5d64b4.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044291-70f50b8c-7025-4b39-82c1-e17788dba357.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044296-bf0c0d1d-1bee-4cef-89b6-a81147235b75.png)  |
+
+| 메인 화면 (2)  | 마커 클릭 시 화면 | 마이페이지 |
+| ------------- | ------------- | ------------- |
+| ![alt text](https://user-images.githubusercontent.com/68496759/182044297-bac36cf1-7c05-4070-b651-5f1bf585cc95.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044301-2629acba-895f-4f15-9980-168af604f12d.png)  | ![alt text](https://user-images.githubusercontent.com/68496759/182044303-4715b247-4939-4042-a995-292e3790ddaa.png) |
 
 ```Swift
 var onDismissBlock : ((Bool) -> Void)?
